@@ -4,4 +4,8 @@ class AuctionsController < ApplicationController
 	def index 
 	end
 
+	# Creates a new auction
+	def new
+	end
+
 end

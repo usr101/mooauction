@@ -7,4 +7,9 @@ class AuctionsControllerTest < ActionController::TestCase
      assert_response :success
   end
 
+  test "should have a new action" do
+  	get :new
+  	assert_response :success
+  end
+
 end
