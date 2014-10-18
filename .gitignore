@@ -17,6 +17,3 @@
 
 # Ignore the database.yml file
 /config/database.yml
-
-# Ignore the secrets.yml file.  We don't want to publish this information.
-/config/secrets.yml
