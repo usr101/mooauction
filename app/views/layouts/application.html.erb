@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mooauction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+	<nav class="navbar navbar-default" role="navigation">
+		 <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-mooauction-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">MooAuction</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-mooauction-navbar-collapse-1">
+    	<ul class="nav navbar-nav">
+    			<li class="active"><a href="#">Home</a></li>
+    			<li><a href="#">Register</a></li>
+    	</ul>
+    	<ul class="nav navbar-nav navbar-right">
+    			<li><a href="#">Sign-in</a></li>
+    	</ul>
+    </div>
+	</nav>
+	<%= yield %>
+</div>
+</body>
+</html>
