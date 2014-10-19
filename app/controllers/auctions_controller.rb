@@ -22,6 +22,23 @@ class AuctionsController < ApplicationController
 
 	end
 
+	# Retreive the auction and display the edit page
+	def edit
+		@auction = Auction.find(params[:id])
+		render 'edit'
+	end
+
+	# Update the auction.
+	def update
+		@auction = Auction.find(params[:id])
+
+		if @auction.update(auction_params)
+			redirect_to :auctions
+		else
+			render 'edit'
+		end
+	end
+
 	private
 
 		def auction_params
