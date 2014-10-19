@@ -1,4 +1,13 @@
 <h1>New Auction</h1>
+<% if @auction.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @auction.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 <%= form_for :auction, url: :auctions do |f| %>
 <div class="form-group">
 	<%= f.label :name, "Auction Name" %>
