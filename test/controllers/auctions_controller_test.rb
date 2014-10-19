@@ -12,4 +12,9 @@ class AuctionsControllerTest < ActionController::TestCase
   	assert_response :success
   end
 
+  test "should have a create action" do
+  	post :create
+  	assert_redirected_to :auctions
+  end
+
 end

@@ -4,8 +4,13 @@ class AuctionsController < ApplicationController
 	def index 
 	end
 
-	# Creates a new auction
+	# Display the new auction form
 	def new
+	end
+
+	# Create a new auction
+	def create
+		redirect_to :auctions
 	end
 
 end
