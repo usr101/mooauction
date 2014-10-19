@@ -18,9 +18,9 @@
 				<td><%= a.id %></td>
 				<td><a href="#"><%= a.name %></a></td>
 				<td><%= a.total_registered_buyers %></td>
-				<td><%= a.total_buyer_pays %></td>
-				<td><%= a.total_packer_pays %></td>
-				<td><%= a.total_sales %></td>
+				<td><%= number_to_currency(a.total_buyer_pays) %></td>
+				<td><%= number_to_currency(a.total_packer_pays) %></td>
+				<td><%= number_to_currency(a.total_sales) %></td>
 				<td><span class="glyphicon glyphicon-pencil"></span><a href="#">Edit</a> <span class="glyphicon glyphicon-trash"></span><a href="#">Delete</a></td>
 			<% end %>
 		</tbody>
