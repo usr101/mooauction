@@ -39,6 +39,22 @@ class AuctionsController < ApplicationController
 		end
 	end
 
+	def delete
+		@auction = Auction.find(params[:id])
+		render 'delete'
+	end
+
+	def destroy
+		@auction = Auction.find(params[:id])
+
+		if @auction.destroy
+			redirect_to :auctions
+		else
+			render 'delete'
+		end
+		
+	end
+
 	private
 
 		def auction_params

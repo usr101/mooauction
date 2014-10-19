@@ -1,0 +1,15 @@
+<h1>Delete Auction</h1>
+<% if @auction.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @auction.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="alert alert-warning">
+	<p>Are you sure you want to want to delete this auction and all the information contained in it?</p>
+</div>
+<%= link_to 'Yes, delete this auction!', auction_path(@auction), method: :delete, class: 'btn btn-danger' %>
+<%= link_to 'No, I changed my mind.', auctions_path, class: 'btn btn-default' %>

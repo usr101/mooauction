@@ -21,7 +21,7 @@
 				<td><%= number_to_currency(a.total_buyer_pays) %></td>
 				<td><%= number_to_currency(a.total_packer_pays) %></td>
 				<td><%= number_to_currency(a.total_sales) %></td>
-				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_path(a.id) %> <span class="glyphicon glyphicon-trash"></span><a href="#">Delete</a></td>
+				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_path(a.id) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', delete_auction_path(a.id) %></a></td>
 			<% end %>
 		</tbody>
 </table>
