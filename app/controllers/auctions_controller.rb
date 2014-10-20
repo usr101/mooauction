@@ -52,7 +52,11 @@ class AuctionsController < ApplicationController
 		else
 			render 'delete'
 		end
-		
+
+	end
+
+	def show
+		@auction = Auction.find(params[:id])
 	end
 
 	private

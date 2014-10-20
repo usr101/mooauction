@@ -16,12 +16,12 @@
 			<% @auctions.each do |a| %>
 			<tr>
 				<td><%= a.id %></td>
-				<td><a href="#"><%= a.name %></a></td>
+				<td><%= link_to a.name, auction_path(a) %></a></td>
 				<td><%= a.total_registered_buyers %></td>
 				<td><%= number_to_currency(a.total_buyer_pays) %></td>
 				<td><%= number_to_currency(a.total_packer_pays) %></td>
 				<td><%= number_to_currency(a.total_sales) %></td>
-				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_path(a.id) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', delete_auction_path(a.id) %></a></td>
+				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_path(a) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', delete_auction_path(a) %></a></td>
 			<% end %>
 		</tbody>
 </table>
