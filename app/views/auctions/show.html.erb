@@ -1,7 +1,7 @@
 <h1><%= @auction.name %></h1>
 <ul class="nav nav-pills">
 	<li class="active"><a href="#">Info</a></li>
-	<li><a href="#">Buyers</a></li>
+	<li><%= link_to 'Buyers', auction_buyers_path(@auction) %></a></li>
 	<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sellers <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
