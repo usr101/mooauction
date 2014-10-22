@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+auction1:
+  name: Test Auction 1
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+auction2:
+  name: Test Auction 2

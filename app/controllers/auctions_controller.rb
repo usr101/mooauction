@@ -57,7 +57,6 @@ class AuctionsController < ApplicationController
 
 	def show
 		@auction = Auction.find(params[:id])
-		@auction_types =   @auction_types = ['Chickens', 'Rabbits', 'Turkeys', 'Goats', 'Lambs', 'Dairy-Feeders', 'Steers', 'Misc']
 	end
 
 	private
