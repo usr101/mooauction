@@ -1,0 +1,19 @@
+<h1>Buyers for <%= @auction.name %></h1>
+<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Number</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @buyers.each do |buyer| %>
+			<tr>
+				<td><%= buyer.id %></td>
+				<td><%= buyer.number %></td>
+				<td><%= buyer.name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+</table>
