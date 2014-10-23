@@ -1,0 +1,22 @@
+<h1>New Buyer</h1>
+<% if @buyer.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @buyer.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<%= form_for :buyer, url: :auction_buyers do |f| %>
+<div class="form-group">
+	<%= f.label :number, "Buyer number" %>
+	<%= f.text_field :number , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :name, "Buyer name" %>
+	<%= f.text_field :name , class: 'form-control' %>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+<%= link_to 'Cancel', auction_buyers_path, class: 'btn btn-default' %>
+<% end %>
