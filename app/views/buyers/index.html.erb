@@ -3,17 +3,17 @@
 <table class="table table-striped">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Number</th>
 				<th>Name</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @buyers.each do |buyer| %>
 			<tr>
-				<td><%= buyer.id %></td>
 				<td><%= buyer.number %></td>
 				<td><%= buyer.name %></td>
+				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_buyer_path(@auction, buyer.id) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', auction_buyer_path(@auction, buyer), method: :delete %></a></td>
 			</tr>
 			<% end %>
 		</tbody>

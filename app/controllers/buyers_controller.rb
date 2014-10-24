@@ -3,7 +3,7 @@ class BuyersController < ApplicationController
 	# Defines an index action that gets all the buyers for a particular auction
 	def index
 		@auction = Auction.find(params[:auction_id])
-		@buyers = Buyer.where("auction_id = ?", @auction.id)
+		@buyers = Buyer.where("auction_id = ?", @auction.id).order(:number)
 	end
 
 	# Bring up the new buyer form.
@@ -24,7 +24,7 @@ class BuyersController < ApplicationController
 		else
 			render 'new'
 		end
-		
+
 	end
 
 	private
