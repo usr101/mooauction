@@ -27,6 +27,30 @@ class BuyersController < ApplicationController
 
 	end
 
+	def edit
+		@buyer = Buyer.find(params[:id])
+		@auction = Auction.find(params[:auction_id])
+	end
+
+	def update
+		@buyer = Buyer.find(params[:id]) 
+		@auction = Auction.find(params[:auction_id])
+
+		if @buyer.update(buyer_params)
+			redirect_to :auction_buyers
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@buyer = Buyer.find(params[:id])
+
+		if @buyer.destroy
+			redirect_to :auction_buyers
+		end
+	end
+
 	private
 
 		def buyer_params
