@@ -4,7 +4,7 @@ class Auction < ActiveRecord::Base
 	before_destroy :clean_up_auction_objects
 
 	def total_registered_buyers
-		0
+		Buyer.where("auction_id = ?", self.id).count
 	end
 
 	def total_buyer_pays
