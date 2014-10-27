@@ -50,7 +50,7 @@ class AuctionsController < ApplicationController
 		if @auction.destroy
 			redirect_to :auctions
 		else
-			render 'delete'
+				render 'delete'
 		end
 
 	end
