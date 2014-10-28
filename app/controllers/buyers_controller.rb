@@ -3,7 +3,7 @@ class BuyersController < ApplicationController
 	# Defines an index action that gets all the buyers for a particular auction
 	def index
 		@auction = Auction.find(params[:auction_id])
-		@buyers = Buyer.where("auction_id = ?", @auction.id).order(:number)
+		@buyers = @auction.buyers.order(:number)
 	end
 
 	# Bring up the new buyer form.
@@ -34,7 +34,6 @@ class BuyersController < ApplicationController
 
 	def update
 		@buyer = Buyer.find(params[:id]) 
-		@auction = Auction.find(params[:auction_id])
 
 		if @buyer.update(buyer_params)
 			redirect_to :auction_buyers
