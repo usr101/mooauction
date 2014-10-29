@@ -1,38 +1,25 @@
-<div class="col-md-12">
-	<h1>Auctions</h1>
+<div class="panel panel-default">
+	<div class="panel-heading">Auctions</div>
+	<div class="panel-body">
+		<p>Select an auction to manage.  To delete or edit the name of an auction, select the appropriate icon.</p>
+	</div>
+	<table class="table table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @auctions.each do |a| %>
+				<tr>
+					<td><%= link_to a.name, auction_path(a) %></td>
+					<td><%= link_to edit_auction_path(a) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
+					<td><%= link_to delete_auction_path(a) do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+				</tr>
+				<% end %>
+			</tbody>
+	</table>
 </div>
-<div class="col-md-12">
-<p><%= link_to 'Create a new Auction', :new_auction , class: 'btn btn-default' %></p>
-</div>
-<div class="list-group col-md-5 col-sm-12 col-xs-12">
-	<% @auctions.each do |a| %>
-	<%= link_to a.name, auction_path(a), class: "list-group-item" %>
-	<% end %>
-</div>
-<!--
-<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th># Reg. Buyers</th>
-				<th>Buyers Pay</th>
-				<th>Packer Pays</th>
-				<th>Total Sales</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @auctions.each do |a| %>
-			<tr>
-				<td><%= a.id %></td>
-				<td><%= link_to a.name, auction_path(a) %></td>
-				<td><%= a.total_registered_buyers %></td>
-				<td><%= number_to_currency(a.total_buyer_pays) %></td>
-				<td><%= number_to_currency(a.total_packer_pays) %></td>
-				<td><%= number_to_currency(a.total_sales) %></td>
-				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_path(a) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', delete_auction_path(a) %></a></td>
-			<% end %>
-		</tbody>
-</table>
--->
+<div><%= link_to 'Create a new Auction', :new_auction , class: 'btn btn-default' %></div>
