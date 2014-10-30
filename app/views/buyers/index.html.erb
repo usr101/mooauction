@@ -1,20 +1,28 @@
-<h1>Buyers for <%= @auction.name %></h1>
-<p><%= link_to 'Add a buyer', :new_auction_buyer %></p>
-<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Number</th>
-				<th>Name</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @buyers.each do |buyer| %>
-			<tr>
-				<td><%= buyer.number %></td>
-				<td><%= buyer.name %></td>
-				<td><span class="glyphicon glyphicon-pencil"></span><%= link_to 'Edit', edit_auction_buyer_path(@auction, buyer.id) %> <span class="glyphicon glyphicon-trash"></span><%= link_to 'Delete', auction_buyer_path(@auction, buyer), method: :delete %></a></td>
-			</tr>
-			<% end %>
-		</tbody>
-</table>
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li class="active">Buyers</li>
+</ol>
+<div class="panel panel-default">
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Name</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @buyers.each do |buyer| %>
+				<tr>
+					<td><%= buyer.number %></td>
+					<td><%= buyer.name %></td>
+					<td><%= link_to edit_auction_buyer_path(@auction, buyer.id) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
+					<td><%= link_to auction_buyer_path(@auction, buyer), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+				</tr>
+				<% end %>
+			</tbody>
+	</table>
+</div>
+<div><%= link_to 'Add a buyer', :new_auction_buyer, class: 'btn btn-default' %></div>

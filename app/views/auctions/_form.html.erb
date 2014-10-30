@@ -1,6 +1,6 @@
 <%= form_for @auction do |f| %>
 <div class="form-group">
-	<%= f.label :name, "Auction Name" %>
+	<%= f.label :name, "Auction Name (max 50 characters)" %>
 	<%= f.text_field :name , class: 'form-control' %>
 </div>
 <button type="submit" class="btn btn-default">Submit</button>

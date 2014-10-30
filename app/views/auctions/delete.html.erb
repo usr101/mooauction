@@ -1,7 +1,13 @@
-<h1>Delete Auction</h1>
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li class="active">Delete Auction</li>
+</ol>
+<div class="page-header">
+	<h1>Delete Auction</h1>
+</div>
 <%= render "notifications" %>
 <div class="alert alert-warning">
-	<p>Are you sure you want to want to delete this auction and all the information contained in it?</p>
+	<p>Are you sure you want to want to delete auction <%= @auction.name %> and all the information contained in it?</p>
 </div>
 <%= link_to 'Yes, delete this auction!', auction_path(@auction), method: :delete, class: 'btn btn-danger' %>
 <%= link_to 'No, I changed my mind.', auctions_path, class: 'btn btn-default' %>
