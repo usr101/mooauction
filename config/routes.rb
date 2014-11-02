@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # Define an auction resource
   resources :auctions do
   		get :delete, on: :member
-  		resources :buyers
+  		resources :buyers do
+  			collection do
+  				get 'import'
+          post 'import', action: 'upload'
+  			end
+  		end
   end
 
   # Root of application should be auctions

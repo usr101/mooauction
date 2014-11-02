@@ -50,6 +50,19 @@ class BuyersController < ApplicationController
 		end
 	end
 
+	def import
+		@auction = Auction.find(params[:auction_id])
+	end
+
+	def upload
+
+		uploaded_io = params[:buyers]
+		puts "Uploaded File named " + uploaded_io.original_filename
+
+		redirect_to :auction_buyers
+
+	end
+
 	private
 
 		def buyer_params
