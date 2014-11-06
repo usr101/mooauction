@@ -1,3 +1,5 @@
+require 'csv'
+
 class BuyersController < ApplicationController
 
 	# Defines an index action that gets all the buyers for a particular auction
@@ -56,9 +58,8 @@ class BuyersController < ApplicationController
 
 	def upload
 
-		uploaded_io = params[:buyers]
-		puts "Uploaded File named " + uploaded_io.original_filename
-
+		auction = Auction.find(params[:auction_id])
+		Buyer.import(params[:file], auction.id)
 		redirect_to :auction_buyers
 
 	end
