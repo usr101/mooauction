@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20141022183639) do
   end
 
   create_table "buyers", force: true do |t|
-    t.integer  "number"
-    t.string   "name"
+    t.integer  "number",     null: false
+    t.string   "name",       null: false
     t.integer  "auction_id"
     t.datetime "created_at"
     t.datetime "updated_at"

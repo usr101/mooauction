@@ -5,6 +5,8 @@ class Buyer < ActiveRecord::Base
 	belongs_to :auction
 	validates :name, presence: true, length: {maximum: 75}
 	validates :number, presence: true
+	validates :auction, presence: true
+	validates :number, uniqueness: {scope: :auction}
 
 	def self.import(file, auction_id)
 
