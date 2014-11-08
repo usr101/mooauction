@@ -57,6 +57,7 @@ class AuctionsController < ApplicationController
 
 	def show
 		@auction = Auction.find(params[:id])
+		@seller_types = SellerType.all
 	end
 
 	private

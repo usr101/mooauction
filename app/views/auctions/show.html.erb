@@ -7,6 +7,17 @@
 </div>
 <ul class="nav nav-pills">
 	<li class="presentation"><%= link_to 'Buyers', auction_buyers_path(@auction) %></a></li>
-	<li class="presentation"><a href="#">Sellers</a></li>
+	<li class="presentation">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			Sellers <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<% @seller_types.each do |seller_type| %>
+			<li><%= link_to seller_type.name, 
+			                auction_sellers_path(@auction, type: seller_type.id) %>
+			</li>
+			<% end %>
+		</ul>
+	</li>
 	<li class="presentation"><a href="#">Bids</a></li>
 </ul>

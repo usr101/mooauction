@@ -9,6 +9,7 @@ Rails.application.routes.draw do
           post 'import', action: 'upload'
   			end
   		end
+      resources :sellers
   end
 
   # Root of application should be auctions
