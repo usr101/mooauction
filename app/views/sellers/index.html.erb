@@ -1,1 +1,38 @@
-<p><%= @seller_type.name %></p>
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li class="active">Sellers (<%= @seller_type.name %>)</li>
+</ol>
+<div class="page-header">
+	<h1>Sellers (<%= @seller_type.name %>)</h1>
+</div>
+<p class="button-group">
+	<%= link_to 'Add a seller', 
+	       new_auction_seller_path(@auction, type: @seller_type.id),
+	       class: 'btn btn-default' %></p>
+<div class="panel panel-default">
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Order</th>
+					<th>Number</th>
+					<th>Name</th>
+					<th>Packer Bid</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @sellers.each do |seller| %>
+				<tr>
+					<td><%= seller.order %></td>
+					<td><%= seller.number %></td>
+					<td><%= seller.name %></td>
+					<td><%= number_to_currency(seller.packerpays) %></td>
+					<td><%= link_to edit_auction_seller_path(@auction, seller.id) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
+					<td><%= link_to auction_seller_path(@auction, seller.id), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+				</tr>
+				<% end %>
+			</tbody>			
+	</table>
+</div>

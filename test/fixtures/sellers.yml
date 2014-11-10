@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  order: 1
+  name: MyString
+  packerpays: 9.99
+  auction: 
+  seller_type: 
+
+two:
+  number: 1
+  order: 1
+  name: MyString
+  packerpays: 9.99
+  auction: 
+  seller_type: 
