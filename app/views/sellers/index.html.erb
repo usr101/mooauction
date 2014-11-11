@@ -29,7 +29,7 @@
 					<td><%= seller.number %></td>
 					<td><%= seller.name %></td>
 					<td><%= number_to_currency(seller.packerpays) %></td>
-					<td><%= link_to edit_auction_seller_path(@auction, seller.id) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
+					<td><%= link_to edit_auction_seller_path(@auction, seller) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
 					<td><%= link_to auction_seller_path(@auction, seller.id), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
 				</tr>
 				<% end %>

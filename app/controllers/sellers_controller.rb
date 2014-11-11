@@ -28,6 +28,12 @@ class SellersController < ApplicationController
 
 	end
 
+	def edit
+		@seller = Seller.find(params[:id])
+		@auction = Auction.find(params[:auction_id])
+		@seller_type = @seller.seller_type
+	end
+
 	private
 
 		def seller_params
