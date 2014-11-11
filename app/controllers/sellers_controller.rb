@@ -34,6 +34,18 @@ class SellersController < ApplicationController
 		@seller_type = @seller.seller_type
 	end
 
+	def update
+		@seller = Seller.find(params[:id])
+		@auction = Auction.find(params[:auction_id])
+
+		if @seller.update(seller_params)
+			redirect_to auction_sellers_path(@auction, type: @seller.seller_type.id)
+		else 
+			render 'new'
+		end
+
+	end
+
 	private
 
 		def seller_params

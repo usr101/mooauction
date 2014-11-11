@@ -16,7 +16,8 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for :buyer, url: auction_buyer_path(@auction.id, @buyer), method: :patch do |f| %>
+<%= form_for :buyer, 
+	url: auction_buyer_path(@auction.id, @buyer), method: :patch do |f| %>
 <div class="form-group">
 	<%= f.label :number, "Buyer number" %>
 	<%= f.text_field :number , class: 'form-control' %>

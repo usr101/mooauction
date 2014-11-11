@@ -17,7 +17,7 @@
 </div>
 <% end %>
 <%= form_for :seller, 
-             url: auction_seller_path(@auction, @seller, type: @seller_type.id) do |f| %>
+             url: auction_seller_path(@auction, @seller, type: @seller_type.id), method: :patch do |f| %>
 <div class="form-group">
 	<%= f.label :order, "Seller order" %>
 	<%= f.text_field :order , class: 'form-control' %>
