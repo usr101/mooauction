@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+seller1:
   number: 1
   order: 1
-  name: MyString
-  packerpays: 9.99
-  auction: 
-  seller_type: 
+  name: Test Seller 1
+  packerpays: 0.00
+  auction: auction1
+  seller_type: chickens
 
-two:
-  number: 1
-  order: 1
-  name: MyString
-  packerpays: 9.99
-  auction: 
-  seller_type: 
+seller2:
+  number: 2
+  order: 2
+  name: Test Seller 2
+  packerpays: 0.00
+  auction: auction1
+  seller_type: chickens
