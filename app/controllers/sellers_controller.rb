@@ -2,13 +2,13 @@ class SellersController < ApplicationController
 
 	def index 
 		@auction = Auction.find(params[:auction_id])
-		@seller_type = SellerType.find(params[:type])
+		@seller_type = SellerType.find(params[:seller_type_id])
 		@sellers = Seller.where(seller_type_id: @seller_type.id).where(auction_id: @auction.id).order(:order)
 	end
 
 	def new
 		@auction = Auction.find(params[:auction_id])
-		@seller_type = SellerType.find(params[:type])
+		@seller_type = SellerType.find(params[:seller_type_id])
 		@seller = Seller.new
 		last_seller = Seller.where(auction_id: @auction.id).where(seller_type_id: @seller_type.id).maximum('order')
 		if not last_seller.nil?
@@ -19,14 +19,14 @@ class SellersController < ApplicationController
 	end
 
 	def create
-		@auction = Auction.find(params[:auction_id])
-		@seller_type = SellerType.find(params[:type])
+		@seller_type = SellerType.find(params[:seller_type_id])
+		@auction = @seller_type.auction
 		@seller = Seller.new(seller_params)
 		@seller.auction = @auction
 		@seller.seller_type = @seller_type
 
 		if @seller.save
-			redirect_to auction_sellers_path(@auction, type: @seller_type.id)
+			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		else
 			render 'new'
 		end
@@ -35,16 +35,17 @@ class SellersController < ApplicationController
 
 	def edit
 		@seller = Seller.find(params[:id])
-		@auction = Auction.find(params[:auction_id])
+		@auction = @seller.auction
 		@seller_type = @seller.seller_type
 	end
 
 	def update
 		@seller = Seller.find(params[:id])
-		@auction = Auction.find(params[:auction_id])
+		@auction = @seller.auction
+		@seller_type = @seller.seller_type
 
-		if @seller.update(seller_params)
-			redirect_to auction_sellers_path(@auction, type: @seller.seller_type.id)
+		if seller.update(seller_params)
+			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		else 
 			render 'new'
 		end
@@ -53,11 +54,11 @@ class SellersController < ApplicationController
 
 	def destroy
 		@seller = Seller.find(params[:id])
-		@auction = Auction.find(params[:auction_id])
-		seller_type_id = @seller.seller_type.id
+		@auction = @seller.auction
+		@seller_type = @seller.seller_type
 
 		if @seller.destroy
-			redirect_to auction_sellers_path(@auction, type: seller_type_id)
+			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		end
 
 	end
