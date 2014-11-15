@@ -44,7 +44,7 @@ class SellersController < ApplicationController
 		@auction = @seller.auction
 		@seller_type = @seller.seller_type
 
-		if seller.update(seller_params)
+		if @seller.update(seller_params)
 			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		else 
 			render 'new'
@@ -66,7 +66,7 @@ class SellersController < ApplicationController
 	private
 
 		def seller_params
-			params.require(:seller).permit(:number, :name, :packerpays, :order)
+			params.require(:seller).permit(:number, :name, :packerpays, :order, :bid)
 		end
 
 end

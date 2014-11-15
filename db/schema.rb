@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115042709) do
+ActiveRecord::Schema.define(version: 20141115162018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20141115042709) do
     t.integer  "seller_type_id",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "bid",            precision: 30, scale: 2, default: 0.0
   end
 
   add_index "sellers", ["auction_id"], name: "index_sellers_on_auction_id", using: :btree
