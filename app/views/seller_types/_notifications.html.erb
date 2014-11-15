@@ -1,0 +1,9 @@
+<% if @seller_type.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @seller_type.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>

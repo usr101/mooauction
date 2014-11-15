@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   			end
   		end
       resources :seller_types do
+        get :delete, on: :member
         resources :sellers
       end
   end

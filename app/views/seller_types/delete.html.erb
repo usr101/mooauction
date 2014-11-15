@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li><%= link_to "Seller Types", auction_seller_types_path(@auction) %></li>
+  <li class="active">Delete Seller Type</li>
+</ol>
+<div class="page-header">
+	<h1>Delete Seller Type</h1>
+</div>
+<%= render "notifications" %>
+<div class="alert alert-warning">
+	<p>Are you sure you want to want to delete seller_type <%= @seller_type.name %> and all sellers and bids associated with?</p>
+</div>
+<%= link_to 'Yes, delete this seller type!', auction_seller_type_path(@auction, @seller_type), method: :delete, class: 'btn btn-danger' %>
+<%= link_to 'No, I changed my mind.', auction_seller_types_path(@auction), class: 'btn btn-default' %>

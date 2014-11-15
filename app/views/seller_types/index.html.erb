@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li class="active">Seller Types</li>
+</ol>
+<div class="page-header">
+	<h1>Seller Types</h1>
+</div>
+<p class="button-group"><%= link_to 'Add a Seller Type', :new_auction_seller_type, class: 'btn btn-default' %> </p>
+<div class="panel panel-default">
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @seller_types.each do |seller_type| %>
+				<tr>
+					<td><%= seller_type.name %></td>
+					<td><%= link_to edit_auction_seller_type_path(@auction, seller_type) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
+					<td><%= link_to delete_auction_seller_type_path(@auction, seller_type) do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+				</tr>
+				<% end %>
+			</tbody>
+	</table>
+</div>

@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li><%= link_to "Seller Types", auction_seller_types_path(@auction) %></li>
+  <li class="active">Edit Seller Type</li>
+</ol>
+<div class="page-header">
+	<h1>Edit Seller Type</h1>
+</div>
+<% if @seller_type.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @seller_type.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<%= form_for :seller_type, 
+	url: auction_seller_type_path(@auction, @seller_type), method: :patch do |f| %>
+<div class="form-group">
+	<%= f.label :name, "Seller Type name" %>
+	<%= f.text_field :name , class: 'form-control' %>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+<%= link_to 'Cancel', auction_seller_types_path, class: 'btn btn-default' %>
+<% end %>
