@@ -35,10 +35,6 @@
 	<%= f.label :packerpays, "Packer Bid" %>
 	<%= f.text_field :packerpays , class: 'form-control' %>
 </div>
-<div class="form-group">
-	<%= f.label :bid, "Buyer Bid" %>
-	<%= f.text_field :bid , class: 'form-control' %>
-</div>
 <button type="submit" class="btn btn-default">Submit</button>
 <%= link_to 'Cancel', auction_seller_type_sellers_path(@auction, @seller_type), class: 'btn btn-default' %>
 <% end %>

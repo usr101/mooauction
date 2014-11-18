@@ -15,7 +15,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">Sellers</div>
 	<div class="panel-body">
-		<p><%= link_to 'Manage Sellers Types', auction_seller_types_path(@auction) %>	</p>
+		<p><%= link_to 'Manage Seller Types', auction_seller_types_path(@auction) %>	</p>
 		<ul>
 			<% @seller_types.each do |seller_type| %>
 			<li><%= link_to seller_type.name, 

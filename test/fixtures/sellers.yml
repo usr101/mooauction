@@ -5,7 +5,6 @@ seller1:
   order: 1
   name: Test Seller 1
   packerpays: 0.00
-  auction: auction1
   seller_type: chickens
 
 seller2:
@@ -13,5 +12,4 @@ seller2:
   order: 2
   name: Test Seller 2
   packerpays: 0.00
-  auction: auction1
   seller_type: chickens

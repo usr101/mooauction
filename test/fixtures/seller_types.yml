@@ -2,6 +2,8 @@
 
 chickens:
   name: Chickens
+  auction: :auction1
 
 turkeys:
   name: Turkeys
+  auction: :auction1

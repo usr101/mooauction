@@ -3,9 +3,9 @@
 buyer1:
   number: 1
   name: Jane Smith
-  auction_id: auction1
+  auction: auction1
 
 buyer2:
   number: 2
   name: John Doe
-  auction_id: auction1
+  auction: auction1

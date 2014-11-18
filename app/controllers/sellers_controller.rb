@@ -3,14 +3,14 @@ class SellersController < ApplicationController
 	def index 
 		@auction = Auction.find(params[:auction_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
-		@sellers = Seller.where(seller_type_id: @seller_type.id).where(auction_id: @auction.id).order(:order)
+		@sellers = @seller_type.sellers.order(:order)
 	end
 
 	def new
 		@auction = Auction.find(params[:auction_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@seller = Seller.new
-		last_seller = Seller.where(auction_id: @auction.id).where(seller_type_id: @seller_type.id).maximum('order')
+		last_seller = Seller.where(seller_type_id: @seller_type.id).maximum('order')
 		if not last_seller.nil?
 			@next_seller_order_number = last_seller + 1
 		else 
@@ -22,7 +22,6 @@ class SellersController < ApplicationController
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@auction = @seller_type.auction
 		@seller = Seller.new(seller_params)
-		@seller.auction = @auction
 		@seller.seller_type = @seller_type
 
 		if @seller.save
@@ -35,14 +34,14 @@ class SellersController < ApplicationController
 
 	def edit
 		@seller = Seller.find(params[:id])
-		@auction = @seller.auction
 		@seller_type = @seller.seller_type
+		@auction = @seller_type.auction
 	end
 
 	def update
 		@seller = Seller.find(params[:id])
-		@auction = @seller.auction
 		@seller_type = @seller.seller_type
+		@auction = @seller_type.auction
 
 		if @seller.update(seller_params)
 			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
@@ -54,8 +53,8 @@ class SellersController < ApplicationController
 
 	def destroy
 		@seller = Seller.find(params[:id])
-		@auction = @seller.auction
 		@seller_type = @seller.seller_type
+		@auction = @seller_type.auction
 
 		if @seller.destroy
 			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
@@ -66,7 +65,7 @@ class SellersController < ApplicationController
 	private
 
 		def seller_params
-			params.require(:seller).permit(:number, :name, :packerpays, :order, :bid)
+			params.require(:seller).permit(:number, :name, :packerpays, :order)
 		end
 
 end
