@@ -61,7 +61,7 @@ class SellerTypesController < ApplicationController
 	private
 
 		def seller_type_params
-			params.require(:seller_type).permit(:name)
+			params.require(:seller_type).permit(:name,:packercalc,:buyercalc)
 		end
 	
 end

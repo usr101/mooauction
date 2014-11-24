@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109005739) do
+ActiveRecord::Schema.define(version: 20141120021604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 20141109005739) do
   add_index "buyers", ["auction_id"], name: "index_buyers_on_auction_id", using: :btree
 
   create_table "seller_types", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "auction_id", null: false
+    t.string   "name",                                    null: false
+    t.integer  "auction_id",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "packercalc", limit: 6, default: "NOCALC"
+    t.string   "buyercalc",  limit: 6, default: "NOCALC"
   end
 
   add_index "seller_types", ["auction_id"], name: "index_seller_types_on_auction_id", using: :btree
@@ -45,12 +47,17 @@ ActiveRecord::Schema.define(version: 20141109005739) do
     t.integer  "number",                                                null: false
     t.integer  "order",                                   default: 0,   null: false
     t.string   "name",                                                  null: false
-    t.decimal  "packerpays",     precision: 30, scale: 2, default: 0.0
+    t.decimal  "packerbid",      precision: 30, scale: 2, default: 0.0
     t.integer  "seller_type_id",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "buyerbid",       precision: 30, scale: 2, default: 0.0, null: false
+    t.integer  "option"
+    t.integer  "bid_id"
+    t.decimal  "weight",         precision: 10, scale: 2, default: 0.0
   end
 
+  add_index "sellers", ["bid_id"], name: "index_sellers_on_bid_id", using: :btree
   add_index "sellers", ["seller_type_id"], name: "index_sellers_on_seller_type_id", using: :btree
 
 end

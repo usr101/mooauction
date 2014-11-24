@@ -17,7 +17,13 @@
 					<th>Order</th>
 					<th>Number</th>
 					<th>Name</th>
+					<th>Weight</th>
 					<th>Packer Bid</th>
+					<th>Packer Pays</th>
+					<th>Buyer Bid</th>
+					<th>Buyer(s)</th>
+					<th>Option</th>
+					<th>Buyer Pays</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
@@ -28,7 +34,13 @@
 					<td><%= seller.order %></td>
 					<td><%= seller.number %></td>
 					<td><%= seller.name %></td>
+					<td><%= seller.weight %>
+					<td><%= number_to_currency(seller.packerbid) %></td>
 					<td><%= number_to_currency(seller.packerpays) %></td>
+					<td><%= number_to_currency(seller.buyerbid) %></td>
+					<td>14 (John Smith)</td>
+					<td><%= seller.option %></td>
+					<td><%= number_to_currency(seller.buyerpays) %></td>
 					<td><%= link_to edit_auction_seller_type_seller_path(@auction, @seller_type, seller) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
 					<td><%= link_to auction_seller_type_seller_path(@auction, @seller_type, seller), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
 				</tr>
