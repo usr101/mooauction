@@ -40,11 +40,11 @@
 					<td><%= number_to_currency(seller.buyerbid) %></td>
 					<td>
 					<% if seller.buyers.any? %>
-					<ul>
-					<% seller.buyers.each do | buyer | %>
-						<li><%= buyer.name %></li>
-					<% end %>
-					</ul>
+						<ul class="naked-list">
+							<% seller.buyers.each do | buyer | %>
+							<li><%= buyer.number_and_name %></li>
+							<% end %>
+						</ul>
 					<% end %>
 					</td>
 					<td><%= seller.option %></td>

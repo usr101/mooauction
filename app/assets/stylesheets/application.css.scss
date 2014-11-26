@@ -1,2 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+ul.naked-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}

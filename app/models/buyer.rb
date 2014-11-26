@@ -23,4 +23,8 @@ class Buyer < ActiveRecord::Base
 		end
 	end
 
+	def number_and_name
+		"#{number}  #{name}"
+	end
+
 end

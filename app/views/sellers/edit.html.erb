@@ -44,22 +44,27 @@
 	<%= f.text_field :buyerbid , class: 'form-control' %>
 </div>
 <div>
-	<%= f.fields_for :bidders do |bidders_form| %>
-	<div class="form-group">
-		<%= bidders_form.label :buyer_id, "Buyer" %>
-		<%= bidders_form.collection_select(:buyer_id,
+	<div class="panel panel-default">
+		<div class="panel-body">
+		<%= f.fields_for :bidders do |bidders_form| %>
+			<div class="form-group">
+			<%= bidders_form.label :buyer_id, "Buyer" %>
+			<%= bidders_form.collection_select(:buyer_id,
 																			 @buyers, :id, 
-																			 :name,
+																			 :number_and_name,
 																			 {:include_blank  => true },
 																			  {:class => 'form-control'} ) %>
 		
+			</div>
+			<div class="checkbox">
+				<%= bidders_form.label :_destroy, "Delete Buyer" do %>
+					<%= bidders_form.check_box :_destroy %> Delete Buyer
+				<% end %>
+			</div>
+			<%= bidders_form.hidden_field :seller_id %>
+		<% end %>
+		</div>
 	</div>
-	<div class="form-group">
-		<%= bidders_form.label :_destroy, "Delete Buyer" %>
-		<%= bidders_form.check_box :_destroy, class: 'form-control' %>
-	</div>
-	<%= bidders_form.hidden_field :seller_id %>
-	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :option, "Option" %>
