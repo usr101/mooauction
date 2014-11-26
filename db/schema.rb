@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120021604) do
+ActiveRecord::Schema.define(version: 20141124195231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20141120021604) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "bidders", force: true do |t|
+    t.integer "seller_id"
+    t.integer "buyer_id"
   end
 
   create_table "buyers", force: true do |t|
@@ -53,11 +58,9 @@ ActiveRecord::Schema.define(version: 20141120021604) do
     t.datetime "updated_at"
     t.decimal  "buyerbid",       precision: 30, scale: 2, default: 0.0, null: false
     t.integer  "option"
-    t.integer  "bid_id"
     t.decimal  "weight",         precision: 10, scale: 2, default: 0.0
   end
 
-  add_index "sellers", ["bid_id"], name: "index_sellers_on_bid_id", using: :btree
   add_index "sellers", ["seller_type_id"], name: "index_sellers_on_seller_type_id", using: :btree
 
 end

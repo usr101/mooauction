@@ -17,7 +17,7 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for :seller, 
+<%= form_for @seller, 
              url: auction_seller_type_seller_path(@auction, @seller_type, @seller), method: :patch do |f| %>
 <div class="form-group">
 	<%= f.label :order, "Seller order" %>
@@ -42,6 +42,24 @@
 <div class="form-group">
 	<%= f.label :buyerbid, "Buyer Bid" %>
 	<%= f.text_field :buyerbid , class: 'form-control' %>
+</div>
+<div>
+	<%= f.fields_for :bidders do |bidders_form| %>
+	<div class="form-group">
+		<%= bidders_form.label :buyer_id, "Buyer" %>
+		<%= bidders_form.collection_select(:buyer_id,
+																			 @buyers, :id, 
+																			 :name,
+																			 {:include_blank  => true },
+																			  {:class => 'form-control'} ) %>
+		
+	</div>
+	<div class="form-group">
+		<%= bidders_form.label :_destroy, "Delete Buyer" %>
+		<%= bidders_form.check_box :_destroy, class: 'form-control' %>
+	</div>
+	<%= bidders_form.hidden_field :seller_id %>
+	<% end %>
 </div>
 <div class="form-group">
 	<%= f.label :option, "Option" %>

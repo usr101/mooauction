@@ -16,6 +16,8 @@ class SellersController < ApplicationController
 		else 
 			@next_seller_order_number = 1
 		end
+		2.times { @seller.bidders.build }
+
 	end
 
 	def create
@@ -36,6 +38,12 @@ class SellersController < ApplicationController
 		@seller = Seller.find(params[:id])
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
+		@buyers = @auction.buyers
+
+		if @seller.bidders.count <= 4
+			(4 - @seller.bidders.count).times { @seller.bidders.build(:seller_id => @seller.id )}
+		end
+
 	end
 
 	def update
@@ -48,7 +56,6 @@ class SellersController < ApplicationController
 		else 
 			render 'new'
 		end
-
 	end
 
 	def destroy
@@ -66,7 +73,9 @@ class SellersController < ApplicationController
 
 		def seller_params
 			params.require(:seller)
-				.permit(:number, :name, :packerbid, :order, :buyerbid, :option, :weight)
+				.permit(:number, :name, :packerbid, :order,
+							 :buyerbid, :option, :weight, 
+							 bidders_attributes: [:id, :buyer_id, :seller_id, :_destroy])
 		end
 
 end

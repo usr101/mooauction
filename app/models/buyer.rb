@@ -7,6 +7,8 @@ class Buyer < ActiveRecord::Base
 	validates :number, presence: true
 	validates :auction, presence: true
 	validates :number, uniqueness: {scope: :auction}
+	has_many :bidders
+	has_many :sellers, through: :bidders
 
 	def self.import(file, auction_id)
 
@@ -20,4 +22,5 @@ class Buyer < ActiveRecord::Base
 
 		end
 	end
+
 end

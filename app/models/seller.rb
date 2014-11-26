@@ -1,9 +1,15 @@
 class Seller < ActiveRecord::Base
 
-	validates :name, presence: true, length: {maximum: 75}
+	has_many :bidders
+	accepts_nested_attributes_for :bidders,
+		reject_if: proc { |attributes| attributes['buyer_id'].blank? }, 
+		allow_destroy: true
 
+	validates :name, presence: true, length: {maximum: 75}
+	has_many :buyers, through: :bidders
 	belongs_to :seller_type
-	
+
+
 	def packerpays
 		packercalc = seller_type.packercalc
 
