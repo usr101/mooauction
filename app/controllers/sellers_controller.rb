@@ -1,3 +1,5 @@
+require 'csv'
+
 class SellersController < ApplicationController
 
 	def index 
@@ -66,6 +68,20 @@ class SellersController < ApplicationController
 		if @seller.destroy
 			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		end
+
+	end
+
+	def import
+		@auction = Auction.find(params[:auction_id])
+		@seller_type = SellerType.find(params[:seller_type_id])
+	end
+
+	def upload
+
+		auction = Auction.find(params[:auction_id])
+		seller_type = SellerType.find(params[:seller_type_id])
+		Seller.import(params[:file], seller_type.id)
+		redirect_to auction_seller_type_sellers_path(auction, seller_type)
 
 	end
 

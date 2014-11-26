@@ -1,6 +1,6 @@
 class Seller < ActiveRecord::Base
 
-	has_many :bidders
+	has_many :bidders, dependent: :destroy
 	accepts_nested_attributes_for :bidders,
 		reject_if: proc { |attributes| attributes['buyer_id'].blank? }, 
 		allow_destroy: true
@@ -47,6 +47,19 @@ class Seller < ActiveRecord::Base
 			return buyerbid
 		else
 			return buyerbid
+		end
+	end
+
+	def self.import(file, seller_type_id)
+
+		Seller.transaction do
+
+			CSV.foreach(file.path, headers: true) do |row|
+				seller_hash = row.to_hash
+				seller_hash['seller_type_id'] = seller_type_id
+				seller = Seller.create!(seller_hash)
+			end
+
 		end
 	end
 

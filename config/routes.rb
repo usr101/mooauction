@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   		end
       resources :seller_types do
         get :delete, on: :member
-        resources :sellers
+        resources :sellers do
+          collection do
+            get 'import'
+            post 'import', action: 'upload'
+          end
+        end
       end
   end
 
