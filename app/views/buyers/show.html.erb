@@ -1,0 +1,32 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li><%= link_to "Buyers", auction_buyers_path(@auction) %></li>
+  <li class="active">Buyer (<%= @buyer.name %>)</li>
+</ol>
+<div class="page-header">
+	<h1>Buyer Information</h1>
+</div>
+<div>
+  <dl>
+    <dt>Name</dt>
+    <dd><%= @buyer.name %></dd>
+  </dl>
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <th>Seller Number</th>
+      <th>Seller Name</th>
+      <th>Seller Type</th>
+    </thead>
+    <tbody>
+    <% @buyer.sellers.each do |seller| %>
+      <td><%= seller.number %></td>
+      <td><%= seller.name %></td>
+      <td><%= seller.seller_type.name %></td>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+    

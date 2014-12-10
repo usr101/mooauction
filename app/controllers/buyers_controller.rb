@@ -44,6 +44,11 @@ class BuyersController < ApplicationController
 		end
 	end
 
+  def show
+    @auction = Auction.find(params[:auction_id])
+    @buyer = Buyer.find(params[:id])
+  end
+
 	def destroy
 		@buyer = Buyer.find(params[:id])
 
