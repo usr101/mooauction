@@ -11,6 +11,8 @@
   <dl>
     <dt>Name</dt>
     <dd><%= @buyer.name %></dd>
+    <dt>Number</dt>
+    <dd><%= @buyer.number %></dd>
   </dl>
 </div>
 <div>
@@ -19,12 +21,20 @@
       <th>Seller Number</th>
       <th>Seller Name</th>
       <th>Seller Type</th>
+      <th>Packer Bid</th>
+      <th>Buyer Bid</th>
+      <th>Option</th>
+      <th>Buyer Pays</th>
     </thead>
     <tbody>
     <% @buyer.sellers.each do |seller| %>
       <td><%= seller.number %></td>
       <td><%= seller.name %></td>
-      <td><%= seller.seller_type.name %></td>
+      <td><%= seller.seller_type.name.singularize %></td>
+      <td><%= number_to_currency(seller.packerbid) %></td>
+      <td><%= number_to_currency(seller.buyerbid) %></td>
+      <td><%= seller.option %></td>
+      <td><%= number_to_currency(seller.buyerpays) %></td>
     <% end %>
     </tbody>
   </table>
