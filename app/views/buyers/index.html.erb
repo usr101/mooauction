@@ -18,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @buyers.each do |buyer| %>
+			<% @buyers.each do |buyer| %>
 				<tr>
 					<td><%= buyer.number %></td>
           <td><%= link_to buyer.name, auction_buyer_path(@auction, buyer) %></td>

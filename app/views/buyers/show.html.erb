@@ -23,6 +23,7 @@
       <th>Seller Type</th>
       <th>Packer Bid</th>
       <th>Buyer Bid</th>
+      <th>Buyer Count</th>
       <th>Option</th>
       <th>Buyer Pays</th>
     </thead>
@@ -33,8 +34,9 @@
       <td><%= seller.seller_type.name.singularize %></td>
       <td><%= number_to_currency(seller.packerbid) %></td>
       <td><%= number_to_currency(seller.buyerbid) %></td>
+      <td><%= seller.buyers.count %></td>
       <td><%= seller.option %></td>
-      <td><%= number_to_currency(seller.buyerpays) %></td>
+      <td><%= number_to_currency(@buyer.pays_for_seller(seller)) %></td>
     <% end %>
     </tbody>
   </table>
