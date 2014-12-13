@@ -11,7 +11,11 @@
 <div class="container">
 	<nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
-      <a href="/" class="navbar-brand">MooAuction</a>
+      <span class="navbar-brand">MooAuction</span>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Auctions', :auctions %></li>
+        <li><%= link_to 'Admin', :admin %></li>
+      </ul>
     </div>
 	</nav>
 	<%= yield %>

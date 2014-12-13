@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'dashboard/index'
+  end
+
+  get 'admindashboard/index'
+
   # Define an auction resource
   resources :auctions do
   		get :delete, on: :member
@@ -18,6 +24,12 @@ Rails.application.routes.draw do
           end
         end
       end
+  end
+
+
+  namespace :admin do
+    get '/', to: 'dashboard#index'
+    resources :users
   end
 
   # Root of application should be auctions
