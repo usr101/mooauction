@@ -7,38 +7,41 @@
 <div class="page-header">
 	<h1>Buyer Information</h1>
 </div>
-<div>
-  <dl>
-    <dt>Name</dt>
-    <dd><%= @buyer.name %></dd>
-    <dt>Number</dt>
-    <dd><%= @buyer.number %></dd>
-  </dl>
+<div class="well">
+  <h2>#<%= @buyer.number %> <small><%= @buyer.name %></small></h2>
 </div>
 <div>
   <table class="table table-striped">
     <thead>
-      <th>Seller Number</th>
-      <th>Seller Name</th>
-      <th>Seller Type</th>
-      <th>Packer Bid</th>
-      <th>Buyer Bid</th>
-      <th>Buyer Count</th>
-      <th>Option</th>
-      <th>Buyer Pays</th>
+      <tr>
+        <th>Seller Number</th>
+        <th>Seller Name</th>
+        <th>Seller Type</th>
+        <th class="table-number">Packer Bid</th>
+        <th class="table-number">Buyer Bid</th>
+        <th class="table-number">Buyer Count</th>
+        <th class="table-number">Option</th>
+        <th class="table-number">Buyer Pays</th>
+      </tr>
     </thead>
     <tbody>
-    <% @buyer.sellers.each do |seller| %>
-      <td><%= seller.number %></td>
-      <td><%= seller.name %></td>
-      <td><%= seller.seller_type.name.singularize %></td>
-      <td><%= number_to_currency(seller.packerbid) %></td>
-      <td><%= number_to_currency(seller.buyerbid) %></td>
-      <td><%= seller.buyers.count %></td>
-      <td><%= seller.option %></td>
-      <td><%= number_to_currency(@buyer.pays_for_seller(seller)) %></td>
+    <% total = BigDecimal.new('0') %> 
+    <% @buyer.sellers.order(:seller_type_id, :order).each do |seller| %>
+      <tr>
+        <td><%= seller.number %></td>
+        <td><%= seller.name %></td>
+        <td><%= seller.seller_type.name.singularize %></td>
+        <td class="table-number"><%= number_to_currency(seller.packerbid) %></td>
+        <td class="table-number"><%= number_to_currency(seller.buyerbid) %></td>
+        <td class="table-number"><%= seller.buyers.count %></td>
+        <td class="table-number"><%= seller.option %></td>
+        <td class="table-number"><%= number_to_currency(@buyer.pays_for_seller(seller)) %></td>
+        <% total = total + @buyer.pays_for_seller(seller) %>
+      </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-    
+<div class="well total-well">
+    <span class="total-label">Total:</span> <span class="total-value"><%= number_to_currency(total) %></span>
+</div>

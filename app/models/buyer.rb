@@ -32,7 +32,7 @@ class Buyer < ActiveRecord::Base
     
     buyer_pays_in_cents = seller.buyerpays * 100
     remainder = buyer_pays_in_cents % num_buyers
-    payment_in_cents = buyer_pays_in_cents / num_buyers  
+    payment_in_cents = (buyer_pays_in_cents / num_buyers).round
     if remainder != 0 and seller.oldest_buyer != nil
       payment_in_cents = payment_in_cents + remainder if id == seller.oldest_buyer.id
     end
