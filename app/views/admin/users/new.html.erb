@@ -1,0 +1,37 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Admin", :admin %></li>
+  <li><%= link_to "Users", :admin_users %></li>
+  <li class="active">New User</li>
+</ol>
+<div class="page-header">
+	<h1>New User</h1>
+</div>
+<% if @user.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<%= form_for @user, url: :admin_users do |f| %>
+<div class="form-group">
+	<%= f.label :name, "Display Name" %>
+	<%= f.text_field :name , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :password, "Password" %>
+	<%= f.password_field :password , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :password_confirmation, "Password Confirmation" %>
+	<%= f.password_field :password_confirmation , class: 'form-control' %>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+<%= link_to 'Cancel', :admin_users, class: 'btn btn-default' %>
+<% end %>
