@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   namespace :admin do
   get 'dashboard/index'
   end
@@ -25,6 +27,11 @@ Rails.application.routes.draw do
         end
       end
   end
+
+  # Login and Logout routes
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
 
   namespace :admin do
