@@ -1,5 +1,7 @@
 class AuctionsController < ApplicationController
 
+	before_action :logged_in_user
+
 	# Collects all the auctions known to the system.
 	def index 
 		@auctions = Auction.all
@@ -64,6 +66,13 @@ class AuctionsController < ApplicationController
 
 		def auction_params
 			params.require(:auction).permit(:name)
+		end
+
+		def logged_in_user
+			unless logged_in?
+				flash[:danger] = "Please log in"
+				redirect_to login_path
+			end
 		end
 
 end
