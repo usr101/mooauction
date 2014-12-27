@@ -1,15 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 seller1:
   number: 1
   order: 1
   name: Test Seller 1
-  packerpays: 0.00
+  packerbid: 0.00
+  weight: 5.00
   seller_type: chickens
 
 seller2:
   number: 2
   order: 2
   name: Test Seller 2
-  packerpays: 0.00
+  packerbid: 0.00
+  weight: 6.00
   seller_type: chickens

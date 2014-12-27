@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class AuctionsControllerTest < ActionController::TestCase
-  
+
+  def setup
+    inject_logon_in_session
+  end
+ 
   test "should have index" do
      get :index
      assert_response :success

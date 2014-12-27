@@ -7,4 +7,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # Injects the user id into the session as if the 
+  # test user is already logged in.
+  def inject_logon_in_session
+    session[:user_id] = users(:spiderman).id
+  end
 end
