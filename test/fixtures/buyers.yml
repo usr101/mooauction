@@ -1,5 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 buyer1:
   number: 1
   name: Jane Smith
@@ -8,4 +6,14 @@ buyer1:
 buyer2:
   number: 2
   name: John Doe
+  auction: auction1
+
+buyer3:
+  number: 3
+  name: Mary Smith
+  auction: auction1
+
+buyer4:
+  number: 4
+  name: Jimmy Doe
   auction: auction1

@@ -7,3 +7,9 @@ chickens:
 turkeys:
   name: Turkeys
   auction: :auction1
+
+goats:
+  name: Goats
+  auction: auction1
+  packercalc: WEIGHT
+  buyercalc: NOCALC

@@ -13,3 +13,23 @@ seller2:
   packerbid: 0.00
   weight: 6.00
   seller_type: chickens
+
+seller3:
+  number: 3
+  order: 3
+  name: Test Seller 3
+  packerbid: 0.00
+  weight: 6.00
+  buyerbid: 130.00
+  option: 1
+  seller_type: chickens
+
+seller4:
+  number: 3
+  order: 4
+  name: Test Seller 4
+  packerbid: 0.80
+  weight: 200.00
+  buyerbid: 300.00
+  option: 1
+  seller_type: goats
