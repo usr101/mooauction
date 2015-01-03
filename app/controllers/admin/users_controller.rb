@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+
+  before_action :logged_in_admin
   
   def index
     @users = User.all

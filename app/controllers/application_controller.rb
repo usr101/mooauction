@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
 			end
 		end
 
+    def logged_in_admin
+      unless has_admin_role?
+        render file: 'public/401.html', status: :unauthorized
+      end
+    end
+
 end

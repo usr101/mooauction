@@ -21,4 +21,10 @@ module SessionsHelper
 		@current_user = nil
 	end
 
+	def has_admin_role?
+		user = current_user
+		"ADMIN" == user.role
+	end
+
+
 end
