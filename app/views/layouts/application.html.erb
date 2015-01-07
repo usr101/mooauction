@@ -23,7 +23,9 @@
     <div class="collapse navbar-collapse" id="auction-navbar-collapse-1">
      <ul class="nav navbar-nav navbar-left">
        <li><%= link_to 'Auctions', :auctions %></li>
+       <% if has_admin_role? %>
        <li><%= link_to 'Admin', :admin %></li>
+       <% end %>
      </ul>
      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
