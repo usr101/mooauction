@@ -1,7 +1,9 @@
 spiderman:
   name: Peter
   email: spidy@gmail.com
+  role: ADMIN
 
 superman:
   name: Clark
   email: super@hotmail.com
+  role: USER

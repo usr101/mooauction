@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 , :if => :validate_password? }
   validates :role, inclusion: { in: %w(USER ADMIN) }
+
+  private
+
+  	def validate_password?
+  		password.present? || password_confirmation.present?
+  	end
+  	
 end
