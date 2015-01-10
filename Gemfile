@@ -49,3 +49,7 @@ gem 'autoprefixer-rails'
 
 # For heroku
 gem 'rails_12factor', group: :production
+
+# Add prawn gem for printing receipts
+gem 'prawn'
+
