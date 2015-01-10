@@ -11,4 +11,9 @@ class BuyersControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 
+  test "should route to receipt" do
+    assert_routing "/auctions/1/buyers/1/receipt", 
+      { controller: "buyers", action: "receipt", auction_id: "1", id: "1" }
+  end
+
 end

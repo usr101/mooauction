@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   				get 'import'
           post 'import', action: 'upload'
   			end
+        member do
+          get 'receipt'
+        end
   		end
       resources :seller_types do
         get :delete, on: :member
