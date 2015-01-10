@@ -17,7 +17,7 @@ Rails.application.routes.draw do
           post 'import', action: 'upload'
   			end
         member do
-          get 'receipt'
+          get 'invoice'
         end
   		end
       resources :seller_types do

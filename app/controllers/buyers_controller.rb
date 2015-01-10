@@ -69,7 +69,7 @@ class BuyersController < ApplicationController
 
 	end
 
-  def receipt
+  def invoice
 
     pdf = Prawn::Document.new
     pdf.text "This is a test"
