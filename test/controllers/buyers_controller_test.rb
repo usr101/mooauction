@@ -16,4 +16,9 @@ class BuyersControllerTest < ActionController::TestCase
       { controller: "buyers", action: "receipt", auction_id: "1", id: "1" }
   end
 
+  test "should get receipt" do
+    get :receipt, auction_id: auctions(:auction1).id, id: 1
+    assert_response :success
+  end
+
 end

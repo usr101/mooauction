@@ -69,6 +69,9 @@ class BuyersController < ApplicationController
 
 	end
 
+  def receipt
+  end
+
 	private
 
 		def buyer_params
