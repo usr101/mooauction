@@ -71,8 +71,7 @@ class BuyersController < ApplicationController
 
   def invoice
 
-    pdf = Prawn::Document.new
-    pdf.text "This is a test"
+    pdf = InvoicePdf.new
     send_data pdf.render, filename: "test.pdf", type: "application/pdf", disposition: "inline"
 
 
