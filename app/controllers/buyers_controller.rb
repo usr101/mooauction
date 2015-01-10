@@ -70,6 +70,12 @@ class BuyersController < ApplicationController
 	end
 
   def receipt
+
+    pdf = Prawn::Document.new
+    pdf.text "This is a test"
+    send_data pdf.render, filename: "test.pdf", type: "application/pdf", disposition: "inline"
+
+
   end
 
 	private
