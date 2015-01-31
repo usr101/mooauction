@@ -11,6 +11,8 @@
   <h2>#<%= @buyer.number %> <small><%= @buyer.name %></small></h2>
 </div>
 <div>
+<p class="button-group"><%= link_to 'Print Invoice', invoice_auction_buyer_path(auction_id: @auction.id, id: @buyer.id), class: 'btn btn-default' %></p>
+<div>
   <table class="table table-striped">
     <thead>
       <tr>
