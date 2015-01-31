@@ -17,7 +17,7 @@ class BuyersControllerTest < ActionController::TestCase
   end
 
   test "should get pdf invoice" do
-    get :invoice, auction_id: auctions(:auction1).id, id: 1
+    get :invoice, auction_id: auctions(:auction1).id, id: buyers(:buyer1).id 
     assert_response :success
     assert response.headers["Content-Type"] == "application/pdf"
   end
