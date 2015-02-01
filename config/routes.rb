@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'profiles/edit_password'
+
+  get 'profiles/update_password'
+
   get 'sessions/new'
 
   namespace :admin do
@@ -36,6 +40,9 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  # Change password routes
+  get 'change_password' => 'profiles#edit_password'
+  post 'change_password' => 'profiles#update_password'
 
   namespace :admin do
     get '/', to: 'dashboard#index'
