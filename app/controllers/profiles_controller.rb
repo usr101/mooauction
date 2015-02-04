@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     @password_form = ChangePasswordForm.new(password_form_params)
     @password_form.user = current_user
     if @password_form.update_password
+      flash[:success] = "Password changed successfully."
       redirect_to :auctions
     else 
       render 'edit_password'
