@@ -73,7 +73,8 @@ class BuyersController < ApplicationController
 
     buyer = Buyer.find(params[:id])
     pdf = InvoicePdf.new(buyer)
-    send_data pdf.render, filename: "test.pdf", type: "application/pdf", disposition: "inline"
+    filename = "invoice_#{buyer.number}_#{Time.now.to_i}.pdf"
+    send_data pdf.render, filename: filename, type: "application/pdf", disposition: "inline"
 
   end
 
