@@ -5,13 +5,20 @@
   <li class="active">Import</li>
 </ol>
 <div class="page-header">
-	<h1>Import</h1>
+	<h1>Import Buyers</h1>
 </div>
+  <p>Import buyers by uploading a buyer CSV file.  The CSV file must be in the following
+     format. The order of the import file will be preserved.</p>
+  <pre>
+number,name
+5,4 Auto Sales
+6,AEP Muskingum River Plant
+7,AEP Waterford
+  </pre>
 <%= form_tag({action: :import}, multipart: true) do %>
 	<div class="form-group">
-		<%= label_tag 'file', 'Import Buyer File' %>
+		<%= label_tag 'file', 'Select a buyer CSV file' %>
   	<%= file_field_tag 'file' %>
-  	<p class="help-block">Select a file to import</p>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
   <%= link_to 'Cancel', auction_buyers_path, class: 'btn btn-default' %>
