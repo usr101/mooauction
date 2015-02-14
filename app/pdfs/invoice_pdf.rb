@@ -8,11 +8,22 @@ class InvoicePdf < Prawn::Document
     @buyer = buyer
     @auction = buyer.auction
 
+    font_size 18
+    text "INVOICE"
+    move_down 5
     font_size 8 
-
+    text "Make Checks Payable To:"
+    font 'Times-Roman', :style => :bold
+    if @auction.checks_payable.present?
+      text @auction.checks_payable
+    else 
+      text "--No Organization Specified--"
+    end
+    font 'Times-Roman', :style => :normal
+    move_down 15
 
     stroke_buyer_data
-    move_down 25 
+    move_down 20
     stroke_axis
     stroke_purchase_data
 
