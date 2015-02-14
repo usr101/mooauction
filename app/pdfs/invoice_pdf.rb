@@ -20,7 +20,9 @@ class InvoicePdf < Prawn::Document
       text "--No Organization Specified--"
     end
     font 'Times-Roman', :style => :normal
-    move_down 15
+    move_down 10
+    text Time.new.strftime("%m/%d/%Y %H:%M:%S")
+    move_down 10
 
     stroke_buyer_data
     move_down 20
