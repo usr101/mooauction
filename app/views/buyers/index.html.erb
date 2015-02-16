@@ -6,7 +6,7 @@
 <div class="page-header">
 	<h1>Buyers</h1>
 </div>
-<p class="button-group"><%= link_to 'Add a buyer', :new_auction_buyer, class: 'btn btn-default' %> <%= link_to 'Import Buyers', :import_auction_buyers, class: 'btn btn-default' %></p>
+<p class="button-group"><%= link_to 'Add a buyer', :new_auction_buyer, class: 'btn btn-default' %> <%= link_to 'Import Buyers', :import_auction_buyers, class: 'btn btn-default' %> <%=link_to 'Export Buyers', auction_buyers_path(@auction, format: 'csv'), class: 'btn btn-default' %></p>
 <div>
 	<table class="table table-striped">
 			<thead>

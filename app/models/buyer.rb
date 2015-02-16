@@ -47,4 +47,14 @@ class Buyer < ActiveRecord::Base
 		"#{number}  #{name}"
 	end
 
+	def self.to_csv
+		CSV.generate do |csv|
+			c_names = ["number", "name"]
+			csv << c_names
+			all.each do |buyer|
+				csv << buyer.attributes.values_at(*c_names)
+			end
+		end
+	end
+
 end

@@ -6,6 +6,10 @@ class BuyersController < ApplicationController
 	def index
 		@auction = Auction.find(params[:auction_id])
 		@buyers = @auction.buyers.order(:number)
+		respond_to do |format| 
+			format.html
+			format.csv {render text: @buyers.to_csv}
+		end
 	end
 
 	# Bring up the new buyer form.
