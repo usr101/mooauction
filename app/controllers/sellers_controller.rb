@@ -6,6 +6,10 @@ class SellersController < ApplicationController
 		@auction = Auction.find(params[:auction_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@sellers = @seller_type.sellers.order(:order)
+		respond_to do |format| 
+			format.html
+			format.csv {render text: Seller.to_csv(@sellers)}
+		end
 	end
 
 	def new

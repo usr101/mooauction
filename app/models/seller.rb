@@ -63,6 +63,17 @@ class Seller < ActiveRecord::Base
 		end
 	end
 
+	def self.to_csv(sellers)
+		CSV.generate do |csv|
+			c_names = ["number", "order", "name", "packerbid", 
+				         "buyer_bid", "option", "weight"]
+			csv << c_names
+			sellers.each do |seller|
+				csv << seller.attributes.values_at(*c_names)
+			end
+		end
+	end
+
   def oldest_buyer
     if buyers.count == 0 
       return nil
