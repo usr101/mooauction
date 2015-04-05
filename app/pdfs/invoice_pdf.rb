@@ -90,11 +90,11 @@ class InvoicePdf < Prawn::Document
       end
 
       
-      if @buyer.sellers.limit(@num_data_rows).offset(current_offset).count < @num_data_rows
-        (@num_data_rows - @buyer.sellers.limit(@num_data_rows).offset(current_offset).count).times do
-          purchase_data += [[" "," "," "," "," "," "," "," "]]
-        end
-      end
+      #if @buyer.sellers.limit(@num_data_rows).offset(current_offset).count < @num_data_rows
+      # (@num_data_rows - @buyer.sellers.limit(@num_data_rows).offset(current_offset).count).times do
+      #    purchase_data += [[" "," "," "," "," "," "," "," "]]
+      #  end
+      #end
 
 
       #purchase_data += [[{:content => 'Total', :colspan => 7, :font_style => :bold}, 
