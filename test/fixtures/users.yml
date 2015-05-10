@@ -1,9 +1,11 @@
 spiderman:
   name: Peter
   email: spidy@gmail.com
+  password_digest: <%= BCrypt::Password.create("password") %>
   role: ADMIN
 
 superman:
   name: Clark
   email: super@hotmail.com
+  password_digest: <%= BCrypt::Password.create("password") %>
   role: USER
