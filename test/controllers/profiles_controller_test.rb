@@ -16,4 +16,10 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "wrong password redisplay edit_password" do
+  	get :update_password, change_password_form: {current_password: 'wrongpassword', new_password: 'password2', confirm_password: 'password2' } 
+  	assert_response :success
+  	assert_template :edit_password
+	end
+
 end
