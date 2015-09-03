@@ -58,7 +58,16 @@ class SellersController < ApplicationController
 		@auction = @seller_type.auction
 
 		if @seller.update(seller_params)
-			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
+			if params[:commit] = 'next' 
+				next_seller = @seller_type.sellers.where("sellers.order > ?", @seller.order).order(:order).first
+				if next_seller
+					redirect_to edit_auction_seller_type_seller_path(@auction, @seller_type, next_seller)
+				else 
+					redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
+				end
+			else
+				redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
+			end
 		else 
 			render 'new'
 		end
