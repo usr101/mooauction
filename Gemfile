@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~>4.1.10'
@@ -30,9 +30,9 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
+# Use puma as the app server
 group :production do 
-	gem 'unicorn'
+	gem 'puma'
 end
 
 # Use Capistrano for deployment
