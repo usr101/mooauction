@@ -39,7 +39,7 @@ class Buyer < ActiveRecord::Base
 
     BigDecimal.mode(BigDecimal::ROUND_MODE, current_round_mode)
       
-    payment_in_dollars = payment_in_cents / 100
+    payment_in_dollars = payment_in_cents / 100.00
 
   end
 
