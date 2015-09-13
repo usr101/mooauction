@@ -46,4 +46,10 @@ class AuctionsControllerTest < ActionController::TestCase
     assert_redirected_to :auctions
   end
 
+  test "should error when invoice_title is invalid on new" do
+    invalid_invoice_title = "a" * 51
+    post :create, auction: {name: 'Some Auction', invoice_title: invalid_invoice_title }
+    assert_template :new
+  end
+
 end
