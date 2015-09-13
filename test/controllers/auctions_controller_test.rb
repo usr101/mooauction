@@ -11,9 +11,14 @@ class AuctionsControllerTest < ActionController::TestCase
      assert_response :success
   end
 
-  test "should have a new action" do
+  test "should have a new action with appropriate fields" do
   	get :new
   	assert_response :success
+    assert_template :new
+    assert_template layout: "layouts/application", partial: "_form"
+    assert_select 'input#auction_name'
+    assert_select 'input#auction_checks_payable'
+    assert_select 'input#auction_invoice_title'
   end
 
   test "should have a create action" do
