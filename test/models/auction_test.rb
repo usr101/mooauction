@@ -16,6 +16,7 @@ class AuctionTest < ActiveSupport::TestCase
 
  test "Auction invoice title cannot be longer than 50 characters" do
  		auction = Auction.new
+ 		auction.name = "test"
  		title = 'a' * 51
  		auction.invoice_title = title
  		assert_not auction.save, "Saved with an invoice title of 51 characters.  Max should be 50."
