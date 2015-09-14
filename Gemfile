@@ -35,6 +35,10 @@ group :production do
 	gem 'puma'
 end
 
+group :test do
+	gem 'pdf-reader'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

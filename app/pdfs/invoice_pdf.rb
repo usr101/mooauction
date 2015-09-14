@@ -10,6 +10,7 @@ class InvoicePdf < Prawn::Document
     super()
     @buyer = buyer
     @auction = buyer.auction
+    @invoice_title = @auction.invoice_title
 
     # We want to print buyer bought items in groups of 25
     total_sellers = @buyer.sellers.count
@@ -37,7 +38,11 @@ class InvoicePdf < Prawn::Document
     def stroke_header
 
       font_size 18
-      text "INVOICE"
+      if (!@invoice_title.blank?) 
+        text @auction.invoice_title
+      else
+        text "INVOICE"
+      end
       move_down 5
       font_size 8 
       text "Make Checks Payable To:"
