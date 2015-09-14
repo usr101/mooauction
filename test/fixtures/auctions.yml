@@ -1,5 +1,6 @@
 auction1:
   name: Test Auction 1
+  invoice_title: Test Auction Service
 
 auction2:
   name: Test Auction 2

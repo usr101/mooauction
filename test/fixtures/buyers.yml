@@ -17,3 +17,8 @@ buyer4:
   number: 4
   name: Jimmy Doe
   auction: auction1
+
+buyer5:
+  number: 1
+  name: Bugs Bunny
+  auction: auction2
