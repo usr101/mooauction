@@ -16,4 +16,14 @@ class SellerTest < ActiveSupport::TestCase
      assert_not @seller.save
 	end
 
+  test "seller can have an number with letters" do
+      @seller = Seller.new
+      @seller.seller_type = seller_types(:chickens)
+      @seller.name = "test seller"
+      @seller.number = "123B"
+      assert @seller.save
+      @saved_seller = Seller.find_by name: "test seller"
+      assert_equal "123B", @saved_seller.number
+  end
+
 end
