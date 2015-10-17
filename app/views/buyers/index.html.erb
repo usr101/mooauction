@@ -15,15 +15,17 @@
 					<th>Name</th>
 					<th>Edit</th>
 					<th>Delete</th>
+					<th>Invoice</th>
 				</tr>
 			</thead>
 			<tbody>
 			<% @buyers.each do |buyer| %>
 				<tr>
 					<td><%= buyer.number %></td>
-          <td><%= link_to buyer.name, auction_buyer_path(@auction, buyer) %></td>
+          			<td><%= link_to buyer.name, auction_buyer_path(@auction, buyer) %></td>
 					<td><%= link_to edit_auction_buyer_path(@auction, buyer.id) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
 					<td><%= link_to auction_buyer_path(@auction, buyer), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+					<td><%= link_to invoice_auction_buyer_path(@auction, buyer.id) do %><span class="glyphicon glyphicon-print"></span><% end %></td>
 				</tr>
 				<% end %>
 			</tbody>
