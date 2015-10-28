@@ -46,9 +46,9 @@ class SellersController < ApplicationController
 		@auction = @seller_type.auction
 		@buyers = @auction.buyers
 
-		if @seller.bidders.count <= 4
-			(4 - @seller.bidders.count).times { @seller.bidders.build(:seller_id => @seller.id )}
-		end
+		#if @seller.bidders.count <= 4
+		#	(4 - @seller.bidders.count).times { @seller.bidders.build(:seller_id => @seller.id )}
+		#end
 
 	end
 
@@ -58,6 +58,25 @@ class SellersController < ApplicationController
 		@auction = @seller_type.auction
 
 		if @seller.update(seller_params)
+			if @seller.buyers.clear
+				success = true
+				params[:seller][:buyer_ids].each do | buyer_id |
+					if not buyer_id.empty?
+						buyer = Buyer.find(buyer_id);
+						if buyer
+							@seller.buyers << buyer
+						else 
+							success = false
+						end
+					end
+				end
+				if not success
+					render 'new'
+				end
+			else 
+				render 'new'
+			end
+
 			if params[:commit] == 'next' 
 				next_seller = @seller_type.sellers.where("sellers.order > ?", @seller.order).order(:order).first
 				if next_seller
@@ -103,8 +122,7 @@ class SellersController < ApplicationController
 		def seller_params
 			params.require(:seller)
 				.permit(:number, :name, :packerbid, :order,
-							 :buyerbid, :option, :weight, 
-							 bidders_attributes: [:id, :buyer_id, :seller_id, :_destroy])
+							 :buyerbid, :option, :weight, :buyer_ids)
 		end
 
 end
