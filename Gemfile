@@ -59,3 +59,6 @@ gem 'prawn'
 
 # Add prawn-table support
 gem 'prawn-table'
+
+# Use bootstrap multiselect
+gem 'bootstrap-multiselect-rails'
