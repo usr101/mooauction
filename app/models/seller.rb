@@ -1,10 +1,6 @@
 class Seller < ActiveRecord::Base
 
 	has_many :bidders, dependent: :destroy
-	accepts_nested_attributes_for :bidders,
-		reject_if: proc { |attributes| attributes['buyer_id'].blank? }, 
-		allow_destroy: true
-
 	validates :name, presence: true, length: {maximum: 75}
 	has_many :buyers, through: :bidders
 	belongs_to :seller_type
