@@ -45,11 +45,6 @@ class SellersController < ApplicationController
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
 		@buyers = @auction.buyers
-
-		#if @seller.bidders.count <= 4
-		#	(4 - @seller.bidders.count).times { @seller.bidders.build(:seller_id => @seller.id )}
-		#end
-
 	end
 
 	def update
