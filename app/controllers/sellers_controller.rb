@@ -54,19 +54,11 @@ class SellersController < ApplicationController
 
 		if @seller.update(seller_params)
 			if @seller.buyers.clear
-				success = true
 				params[:seller][:buyer_ids].each do | buyer_id |
 					if not buyer_id.empty?
-						buyer = Buyer.find(buyer_id);
-						if buyer
-							@seller.buyers << buyer
-						else 
-							success = false
-						end
+						buyer = Buyer.find(buyer_id)
+						@seller.buyers << buyer
 					end
-				end
-				if not success
-					render 'new'
 				end
 			else 
 				render 'new'
