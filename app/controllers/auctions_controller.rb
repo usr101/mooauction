@@ -65,7 +65,8 @@ class AuctionsController < ApplicationController
 	private
 
 		def auction_params
-			params.require(:auction).permit(:name, :checks_payable, :invoice_title)
+			params.require(:auction).permit(:name, :checks_payable, 
+				:invoice_title, :address1, :address2, :address3)
 		end
 
 		def logged_in_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002012823) do
+ActiveRecord::Schema.define(version: 20151107134931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20151002012823) do
     t.datetime "updated_at"
     t.string   "checks_payable"
     t.string   "invoice_title",  limit: 50
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
   end
 
   create_table "bidders", force: true do |t|

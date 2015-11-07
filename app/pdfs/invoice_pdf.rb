@@ -44,7 +44,11 @@ class InvoicePdf < Prawn::Document
         text "INVOICE"
       end
       move_down 5
-      font_size 8 
+      font_size 8
+      text @auction.address1 
+      text @auction.address2
+      text @auction.address3
+      move_down 5
       text "Make Checks Payable To:"
       font 'Times-Roman', :style => :bold
       if @auction.checks_payable.present?
