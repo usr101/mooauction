@@ -57,4 +57,22 @@ class AuctionsControllerTest < ActionController::TestCase
     assert_template :new
   end
 
+  test "should have address1 field" do
+    get :edit, id: (auctions(:auction1).id)
+    assert_response :success
+    assert_select "#auction_address1"
+  end
+
+  test "should have address2 field" do
+    get :edit, id: (auctions(:auction1).id)
+    assert_response :success
+    assert_select "#auction_address2"
+  end 
+
+  test "should have address3 field" do
+    get :edit, id: (auctions(:auction1).id)
+    assert_response :success
+    assert_select "#auction_address3"
+  end    
+
 end
