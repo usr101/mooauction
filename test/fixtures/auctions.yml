@@ -1,6 +1,9 @@
 auction1:
   name: Test Auction 1
   invoice_title: Test Auction Service
+  address1: Test Auction Company
+  address2: 300 Main Street
+  address3: Smallville, ID  23432
 
 auction2:
   name: Test Auction 2
