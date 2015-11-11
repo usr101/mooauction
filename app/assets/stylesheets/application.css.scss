@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-multiselect";
+@import "select2";
+@import "select2-bootstrap";
 
 ul.naked-list {
 	list-style: none;

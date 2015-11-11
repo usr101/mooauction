@@ -61,4 +61,7 @@ gem 'prawn'
 gem 'prawn-table'
 
 # Use bootstrap multiselect
-gem 'bootstrap-multiselect-rails'
+# gem 'bootstrap-multiselect-rails'
+
+# Use Select 2 select replacement
+gem 'select2-rails'
