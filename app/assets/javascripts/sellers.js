@@ -1,8 +1,7 @@
 var do_on_load = function() {
-	$("#seller_buyer_ids").multiselect({
-		enableFiltering: true,
-		maxHeight: 200,
-		filterPlaceholder: 'Search for buyer...'
+	$("#seller_buyer_ids").select2({
+		theme: "bootstrap",
+		width: '100%'
 	});
 };
 
