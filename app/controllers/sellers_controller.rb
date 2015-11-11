@@ -44,7 +44,7 @@ class SellersController < ApplicationController
 		@seller = Seller.find(params[:id])
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
-		@buyers = @auction.buyers
+		@buyers = @auction.buyers.order(:number)
 	end
 
 	def update
