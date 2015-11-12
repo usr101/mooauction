@@ -51,6 +51,7 @@ class SellersController < ApplicationController
 		@seller = Seller.find(params[:id])
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
+		@buyers = @auction.buyers.order(:number)
 
 		if @seller.update(seller_params)
 			if @seller.buyers.clear
@@ -61,7 +62,7 @@ class SellersController < ApplicationController
 					end
 				end
 			else 
-				render 'new'
+				render 'edit'
 			end
 
 			if params[:commit] == 'next' 
@@ -75,7 +76,7 @@ class SellersController < ApplicationController
 				redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 			end
 		else 
-			render 'new'
+			render 'edit'
 		end
 	end
 

@@ -4,7 +4,7 @@ class Buyer < ActiveRecord::Base
 
 	belongs_to :auction
 	validates :name, presence: true, length: {maximum: 75}
-	validates :number, presence: true
+	validates :number, presence: true, numericality: { only_integer: true }
 	validates :auction, presence: true
 	validates :number, uniqueness: {scope: :auction}
 	has_many :bidders
