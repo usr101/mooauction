@@ -2,6 +2,10 @@ class Seller < ActiveRecord::Base
 
 	has_many :bidders, dependent: :destroy
 	validates :name, presence: true, length: {maximum: 75}
+	validates :buyerbid, numericality: true
+	validates :weight, numericality: true
+	validates :packerbid, numericality: true
+	validates :order, numericality: { only_integer: true }
 	has_many :buyers, through: :bidders
 	belongs_to :seller_type
 
