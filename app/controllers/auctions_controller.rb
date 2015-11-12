@@ -4,7 +4,7 @@ class AuctionsController < ApplicationController
 
 	# Collects all the auctions known to the system.
 	def index 
-		@auctions = Auction.all
+		@auctions = Auction.all.order(:created_at)
 	end
 
 	# Display the new auction form
