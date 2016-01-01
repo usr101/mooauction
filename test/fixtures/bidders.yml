@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: bidders
+#
+#  id        :integer          not null, primary key
+#  seller_id :integer
+#  buyer_id  :integer
+#
+
 bidder1:
   buyer: buyer3
   seller: seller3
