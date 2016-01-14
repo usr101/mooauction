@@ -65,3 +65,8 @@ gem 'prawn-table'
 
 # Use Select 2 select replacement
 gem 'select2-rails'
+
+# Use the annotate-models gem 
+group :development do
+	gem 'annotate'
+end
