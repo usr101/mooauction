@@ -59,6 +59,9 @@ class SellersController < ApplicationController
 
 	def edit
 		@seller = Seller.find(params[:id])
+		if @seller.bid.nil?
+			@seller.bid = Bid.new
+		end
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
 		@buyers = @auction.buyers.order(:number)
@@ -127,7 +130,7 @@ class SellersController < ApplicationController
 		def seller_params
 			params.require(:seller)
 				.permit(:number, :name, :packerbid, :order,
-							 :buyerbid, :option, :weight, :buyer_ids)
+							 :weight, bid_attributes: [:id, :buyerbid, :option])
 		end
 
 end

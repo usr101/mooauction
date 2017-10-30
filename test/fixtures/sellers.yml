@@ -50,3 +50,12 @@ seller4:
   buyerbid: 300.00
   option: 1
   seller_type: goats
+
+seller5:
+  number: 4
+  order: 5
+  name: Test Seller 5
+  packerbid: 0.80
+  weight: 200.00
+  option: 1
+  seller_type: goats

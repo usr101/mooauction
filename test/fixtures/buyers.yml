@@ -34,3 +34,8 @@ buyer5:
   number: 1
   name: Bugs Bunny
   auction: auction2
+
+buyer6:
+  number: 5
+  name: Nil Buyer
+  auction: auction1

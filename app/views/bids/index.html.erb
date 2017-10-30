@@ -1,0 +1,46 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li class="active">Bids (<%= @seller_type.name %>)</li>
+</ol>
+<div class="page-header">
+  <h1>Bids (<%= @seller_type.name %>)</h1>
+</div>
+<div>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Bid Amount</th>
+          <th>Buyers</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sellers.each do |seller| %>
+        <tr>
+          <td><%= seller.order %></td>
+          <td><%= seller.number %></td>
+          <td><%= seller.name %></td>
+          <% if seller.bid.nil? %>
+            <td><%= link_to 'Add Bid', new_auction_seller_type_seller_bid_path(@auction, @seller_type, seller)%></td>
+            <td>N/A</td>
+            <td>N/A</td>
+          <% else %>
+            <td><%= link_to number_to_currency(seller.bid.buyerbid), edit_auction_seller_type_seller_bid_path(@auction, @seller_type, seller, seller.bid)%></td>
+            <td>
+              <ul class="naked-list">
+                <% seller.bid.buyers.each do | buyer | %>
+                <li><%= buyer.number_and_name %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td><%= seller.bid.option %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>      
+  </table>
+</div>

@@ -1,29 +1,11 @@
-# == Schema Information
-#
-# Table name: sellers
-#
-#  id             :integer          not null, primary key
-#  number         :string(255)      not null
-#  order          :integer          default(0), not null
-#  name           :string(255)      not null
-#  packerbid      :decimal(30, 2)   default(0.0)
-#  seller_type_id :integer          not null
-#  created_at     :datetime
-#  updated_at     :datetime
-#  buyerbid       :decimal(30, 2)   default(0.0), not null
-#  option         :integer
-#  weight         :decimal(10, 2)   default(0.0)
-#
-
 class Seller < ActiveRecord::Base
 
-	has_many :bidders, dependent: :destroy
 	validates :name, presence: true, length: {maximum: 75}
-	validates :buyerbid, numericality: true
 	validates :weight, numericality: true
 	validates :packerbid, numericality: true
 	validates :order, numericality: { only_integer: true }
-	has_many :buyers, through: :bidders
+	has_one :bid
+	accepts_nested_attributes_for :bid
 	belongs_to :seller_type
 
 
@@ -46,7 +28,9 @@ class Seller < ActiveRecord::Base
 		buyercalc = seller_type.buyercalc
 		packercalc = seller_type.packercalc
 
-		if (buyercalc == "WEIGHT") and (packercalc == "WEIGHT") and (option == 1 )
+		if buyerbid.nil?
+			return 0
+		elsif (buyercalc == "WEIGHT") and (packercalc == "WEIGHT") and (option == 1 )
 			return (buyerbid - packerbid) * weight
 		elsif (buyercalc == "WEIGHT") and (packercalc == "WEIGHT") and (option != 1)
 			return buyerbid * weight

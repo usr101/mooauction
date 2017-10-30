@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li><%= link_to 'Sellers (' + @seller_type.name + ')',
+                                auction_seller_type_sellers_path(@auction, @seller_type) %></li>
+  <li><%= link_to 'Seller #' + @seller.number + ' (' + @seller.name + ')',
+                                auction_seller_type_seller_path(@auction, @seller_type, @seller) %></li>
+  <li>Bid</li>
+</ol>
+<div class="page-header">
+	<h1>Bid for <%= @seller_type.name %> #<%= @seller.number %> <%= @seller.name %></h1>
+</div>
+<div>
+	<% if @seller.bid.nil? %>
+	<p>No Bid</p>
+	<% else %>
+	<p>Bid Amount: <%= @seller.bid.buyerbid %></p>
+	<p>Option: <%= @seller.bid.option %></p>
+	<p>Buyers:</p>
+	<ul>
+		<% @seller.bid.buyers.each do |buyer| %>
+		<li><%= buyer.name %> (<%= buyer.number %>)</li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>

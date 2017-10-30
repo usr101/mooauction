@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyerbid: 
+  buyerbid: 
+  option: 1
+
+two:
+  buyerbid: 
+  buyerbid: 
+  option: 1
