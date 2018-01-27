@@ -59,12 +59,8 @@ class SellersController < ApplicationController
 
 	def edit
 		@seller = Seller.find(params[:id])
-		if @seller.bid.nil?
-			@seller.bid = Bid.new
-		end
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
-		@buyers = @auction.buyers.order(:number)
 	end
 
 	def update
@@ -74,27 +70,7 @@ class SellersController < ApplicationController
 		@buyers = @auction.buyers.order(:number)
 
 		if @seller.update(seller_params)
-			if @seller.buyers.clear
-				params[:seller][:buyer_ids].each do | buyer_id |
-					if not buyer_id.empty?
-						buyer = Buyer.find(buyer_id)
-						@seller.buyers << buyer
-					end
-				end
-			else 
-				render 'edit'
-			end
-
-			if params[:commit] == 'next' 
-				next_seller = @seller_type.sellers.where("sellers.order > ?", @seller.order).order(:order).first
-				if next_seller
-					redirect_to edit_auction_seller_type_seller_path(@auction, @seller_type, next_seller)
-				else 
-					redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
-				end
-			else
-				redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
-			end
+			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
 		else 
 			render 'edit'
 		end
