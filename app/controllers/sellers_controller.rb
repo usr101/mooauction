@@ -67,7 +67,6 @@ class SellersController < ApplicationController
 		@seller = Seller.find(params[:id])
 		@seller_type = @seller.seller_type
 		@auction = @seller_type.auction
-		@buyers = @auction.buyers.order(:number)
 
 		if @seller.update(seller_params)
 			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
