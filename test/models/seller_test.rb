@@ -43,15 +43,5 @@ class SellerTest < ActiveSupport::TestCase
       assert_equal "123B", @saved_seller.number
   end
 
-  test "buyerbid can be null" do
-      @seller = Seller.new
-      @seller.seller_type = seller_types(:chickens)
-      @seller.name = "test seller"
-      @seller.number = "1"
-      @seller.buyerbid = nil
-      assert @seller.save, "Could not save seller with nil buyerbid!"
-      @saved_seller = Seller.find_by name:"test seller"
-      assert_equal nil, @saved_seller.buyerbid, "Saved seller expected buyerbid to be nil, but wasn't!"
-  end
 
 end
