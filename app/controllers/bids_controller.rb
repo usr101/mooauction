@@ -10,9 +10,7 @@ class BidsController < ApplicationController
 	end
 
 	def index 
-		@auction = Auction.find(params[:auction_id])
-		@seller_type = SellerType.find(params[:seller_type_id])
-		@sellers = Seller.where("seller_type_id = ?", params[:seller_type_id]).order(order: :asc)
+		@bids = Bid.where("seller_id = ?", params[:seller_id])
 	end
 
 	def new

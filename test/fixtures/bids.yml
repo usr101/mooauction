@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  buyerbid: 
-  buyerbid: 
+buyer1:
+  buyerbid: 200
   option: 1
+  seller: seller1
 
-two:
-  buyerbid: 
-  buyerbid: 
-  option: 1
+buyer2:
+  buyerbid: 340
+  option: 2
+  seller: seller2
