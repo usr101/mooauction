@@ -15,4 +15,7 @@ class BidsController < ApplicationController
 		@sellers = Seller.where("seller_type_id = ?", params[:seller_type_id]).order(order: :asc)
 	end
 
+	def new
+	end
+
 end

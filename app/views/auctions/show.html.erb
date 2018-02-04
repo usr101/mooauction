@@ -20,8 +20,6 @@
 			<% @seller_types.each do |seller_type| %>
 			<li><%= link_to seller_type.name, 
 			                auction_seller_type_sellers_path(@auction, seller_type) %>
-			    (<%= link_to "Bids", 
-			                auction_seller_type_bids_path(@auction, seller_type) %>)         
 			</li>
 			<% end %>
 		</ul>

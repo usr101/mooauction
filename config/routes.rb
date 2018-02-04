@@ -31,9 +31,8 @@ Rails.application.routes.draw do
             get 'import'
             post 'import', action: 'upload'
           end
-          resources :bids, only: [:new, :create, :edit, :show, :update, :destroy]
+          resources :bids
         end
-        resources :bids, only: [:index]
       end
 
   end
