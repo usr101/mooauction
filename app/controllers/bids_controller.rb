@@ -14,6 +14,9 @@ class BidsController < ApplicationController
 	end
 
 	def new
+		@seller = Seller.find(params[:seller_id])
+		@bid = Bid.new
+		@bid.seller = @seller
 	end
 
 end
