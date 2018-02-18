@@ -5,7 +5,6 @@ class Seller < ActiveRecord::Base
 	validates :packerbid, numericality: true
 	validates :order, numericality: { only_integer: true }
 	has_one :bid
-	accepts_nested_attributes_for :bid
 	belongs_to :seller_type
 
 

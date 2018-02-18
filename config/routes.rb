@@ -31,7 +31,7 @@ Rails.application.routes.draw do
             get 'import'
             post 'import', action: 'upload'
           end
-          resources :bids
+          resource :bid
         end
       end
 

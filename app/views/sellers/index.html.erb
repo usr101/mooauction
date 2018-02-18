@@ -19,8 +19,7 @@
 					<th>Name</th>
 					<th>Weight</th>
 					<th>Packer Bid</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Buyer(s) Bid</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,11 +27,14 @@
 				<tr>
 					<td><%= seller.order %></td>
 					<td><%= seller.number %></td>
-					<td><%= seller.name %></td>
-					<td><%= seller.weight %>
+					<td><%= link_to seller.name, edit_auction_seller_type_seller_path(@auction,@seller_type, seller) %></td>
+					<td><%= seller.weight %></td>
 					<td><%= number_to_currency(seller.packerbid) %></td>
-					<td><%= link_to edit_auction_seller_type_seller_path(@auction, @seller_type, seller) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
-					<td><%= link_to auction_seller_type_seller_path(@auction, @seller_type, seller), method: :delete do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+					<% if seller.bid.nil? %>
+					<td><%= link_to "Add Bid", new_auction_seller_type_seller_bid_path(@auction, @seller_type, seller) %></td>							
+					<% else %>
+					<td><%= number_to_currency(seller.bid.buyerbid) %></td>	
+					<% end %>
 				</tr>
 				<% end %>
 			</tbody>			

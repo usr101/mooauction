@@ -1,0 +1,37 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Auctions", auctions_path %></li>
+  <li><%= link_to @auction.name, auction_path(@auction) %></li>
+  <li><%= link_to 'Sellers (' + @seller_type.name + ')',
+                                auction_seller_type_sellers_path(@auction, @seller_type) %></li>
+  <li>Seller (<%= @seller.number %> - <%= @seller.name %>)
+
+  <li class="active">New Bid</li>
+</ol>
+<div class="page-header">
+	<h1>New Bid</h1>
+</div>
+<% if @bid.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+		<% @bid.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<%= form_for :bid, url: auction_seller_type_seller_bid_path(@auction, @seller_type, @seller) do |f| %>
+<div class="form-group">
+	<%= f.label :buyerbid, "Bid Amount" %>
+	<%= f.text_field :buyerbid , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :buyernumbers, "Buyer numbers" %>
+	<%= f.text_field :buyernumbers, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :option, "Buyer option" %>
+	<%= f.text_field :option , class: 'form-control' %>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+<%= link_to 'Cancel', auction_seller_type_sellers_path(@auction, @seller_type), class: 'btn btn-default' %>
+<% end %>

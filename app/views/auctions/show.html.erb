@@ -19,7 +19,15 @@
 		<ul>
 			<% @seller_types.each do |seller_type| %>
 			<li><%= link_to seller_type.name, 
-			                auction_seller_type_sellers_path(@auction, seller_type) %>
+			                auction_seller_type_sellers_path(@auction, seller_type) %> 
+			</li>
+			<% end %>
+		</ul>
+		<p>Manage Bids</p>
+		<ul>
+			<% @seller_types.each do |seller_type| %>
+			<li><%= link_to seller_type.name, 
+							"#" %>
 			</li>
 			<% end %>
 		</ul>

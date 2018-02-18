@@ -48,3 +48,7 @@
 </div>
 
 <% end %>
+
+<%= link_to "Delete Seller", 
+	auction_seller_type_seller_path(@auction, @seller_type, @seller),
+	method: :delete  %>
