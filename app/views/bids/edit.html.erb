@@ -5,10 +5,10 @@
                                 auction_seller_type_sellers_path(@auction, @seller_type) %></li>
   <li>Seller (<%= @seller.number %> - <%= @seller.name %>)
 
-  <li class="active">New Bid</li>
+  <li class="active">Edit Bid</li>
 </ol>
 <div class="page-header">
-	<h1>New Bid</h1>
+	<h1>Edit Bid</h1>
 </div>
 <% if @bid.errors.any? %>
 <div class="alert alert-danger" role="alert">
@@ -19,15 +19,22 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for @bid, url: auction_seller_type_seller_bid_path(@auction, @seller_type, @seller) do |f| %>
+<%= form_for @bid, url: auction_seller_type_seller_bid_path(@auction, @seller_type, @seller), method: :patch do |f| %>
 <div class="form-group">
 	<%= f.label :buyerbid, "Bid Amount" %>
 	<%= f.text_field :buyerbid , class: 'form-control' %>
 </div>
+<%= f.fields_for :bidders do |bidders_form| %>
 <div class="form-group">
-	<%= f.label :buyer_ids, "Buyer(s)" %>
-	<%= f.collection_select(:buyer_ids, @buyers, :id, :number_and_name, {}, {:multiple => true}) %>
+	<%= bidders_form.label "Buyer" %>
+	<%= bidders_form.collection_select(:buyer_id, @buyers, :id,
+				 :number_and_name, {}, { class: 'form-control' }) %>
 </div>
+<div class="form-group">
+	<%= bidders_form.label "Amount" %>
+	<%= bidders_form.text_field :amount, class: 'form-control' %>
+</div>
+<% end %>
 <div class="form-group">
 	<%= f.label :option, "Buyer option" %>
 	<%= f.text_field :option , class: 'form-control' %>

@@ -33,7 +33,7 @@
 					<% if seller.bid.nil? %>
 					<td><%= link_to "Add Bid", new_auction_seller_type_seller_bid_path(@auction, @seller_type, seller) %></td>							
 					<% else %>
-					<td><%= number_to_currency(seller.bid.buyerbid) %></td>	
+					<td><%= link_to number_to_currency(seller.bid.buyerbid), edit_auction_seller_type_seller_bid_path(@auction, @seller_type, seller, seller.bid) %></td>	
 					<% end %>
 				</tr>
 				<% end %>
