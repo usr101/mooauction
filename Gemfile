@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.3.6"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>4.1.10'
+gem 'rails', '~>4.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.21.0'
 # Use SCSS for stylesheets
@@ -69,4 +69,7 @@ gem 'select2-rails'
 # Use the annotate-models gem 
 group :development do
 	gem 'annotate'
+	gem 'web-console', '~> 2.0'
 end
+
+gem'responders', '~> 2.0'
