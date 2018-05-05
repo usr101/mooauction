@@ -6,22 +6,10 @@
 	<h1><%= @auction.name %></h1>
 </div>
 <div class="panel panel-default">
-	<div class="panel-heading">Buyers</div>
+	<div class="panel-heading">Manage</div>
 	<div class="panel-body">
-		<%= link_to 'Manage Buyers', auction_buyers_path(@auction) %>
-	</div>
-</div>
-<div>
-<div class="panel panel-default">
-	<div class="panel-heading">Sellers</div>
-	<div class="panel-body">
+		<p><%= link_to 'Buyers', auction_buyers_path(@auction) %><p>
 		<p><%= link_to 'Manage Seller Types', auction_seller_types_path(@auction) %>	</p>
-		<ul>
-			<% @seller_types.each do |seller_type| %>
-			<li><%= link_to seller_type.name, 
-			                auction_seller_type_sellers_path(@auction, seller_type) %> 
-			</li>
-			<% end %>
-		</ul>
 	</div>
 </div>
+

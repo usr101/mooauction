@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   namespace :admin do
-  get 'dashboard/index'
+    get 'dashboard/index'
   end
 
   get 'admindashboard/index'
@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # Define an auction resource
   resources :auctions do
   		get :delete, on: :member
-  		resources :buyers do
+  		
+      resources :buyers do
   			collection do
   				get 'import'
           post 'import', action: 'upload'
@@ -23,17 +24,19 @@ Rails.application.routes.draw do
         member do
           get 'invoice'
         end
+
   		end
-      resources :seller_types do
-        get :delete, on: :member
-        resources :sellers do
-          collection do
-            get 'import'
-            post 'import', action: 'upload'
-          end
-          resource :bid
+
+      resources :seller_types
+
+      resources :sellers do
+        collection do
+          get 'import'
+          post 'import', action: 'upload'
         end
       end
+
+      resource :bid
 
   end
 
