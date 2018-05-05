@@ -22,10 +22,14 @@
     <% if logged_in? %>
     <div class="collapse navbar-collapse" id="auction-navbar-collapse-1">
      <ul class="nav navbar-nav navbar-left">
-       <li><%= link_to 'Auctions', :auctions %></li>
-       <% if has_admin_role? %>
-       <li><%= link_to 'Admin', :admin %></li>
-       <% end %>
+        <li><%= link_to 'Auctions', :auctions %></li>
+        <% if @auction %>
+        <li><%= link_to 'Buyers',  '#' %></li>
+        <li><%= link_to 'Types', '#' %></li>
+        <% end %>
+        <% if has_admin_role? %>
+      <li><%= link_to 'Admin', :admin %></li>
+      <% end %>
      </ul>
      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
