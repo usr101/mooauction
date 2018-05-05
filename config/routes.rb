@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :auctions do
   		get :delete, on: :member
   		
-      resources :buyers do
+      resources :buyers, except: :show do
   			collection do
   				get 'import'
           post 'import', action: 'upload'

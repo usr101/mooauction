@@ -20,12 +20,21 @@
 	url: auction_buyer_path(@auction.id, @buyer), method: :patch do |f| %>
 <div class="form-group">
 	<%= f.label :number, "Buyer number" %>
-	<%= f.text_field :number , class: 'form-control', type: 'number', step: 'any' %>
+	<%= f.text_field :number , class: 'form-control' %>
 </div>
 <div class="form-group">
 	<%= f.label :name, "Buyer name" %>
 	<%= f.text_field :name , class: 'form-control' %>
 </div>
-<button type="submit" class="btn btn-default">Submit</button>
-<%= link_to 'Cancel', auction_buyers_path, class: 'btn btn-default' %>
+<div class="row">
+	<div class="col-sm-11">
+		<button type="submit" class="btn btn-default">Submit</button>
+		<%= link_to 'Cancel', auction_buyers_path, class: 'btn btn-default' %>
+	</div>
+	<div class="col-sm-1">
+		<%= link_to 'Delete', auction_buyer_path(@auction.id, @buyer),
+			method: :delete,
+		 	data: { confirm: 'Are you sure?'} %>
+	</div>
+</div>
 <% end %>

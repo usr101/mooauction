@@ -19,7 +19,7 @@
 <%= form_for :buyer, url: :auction_buyers do |f| %>
 <div class="form-group">
 	<%= f.label :number, "Buyer number" %>
-	<%= f.text_field :number , class: 'form-control', type: 'number', step: 'any' %>
+	<%= f.text_field :number , class: 'form-control' %>
 </div>
 <div class="form-group">
 	<%= f.label :name, "Buyer name" %>
