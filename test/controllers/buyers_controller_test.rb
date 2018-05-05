@@ -28,11 +28,5 @@ class BuyersControllerTest < ActionController::TestCase
       { controller: "buyers", action: "invoice", auction_id: "1", id: "1" }
   end
 
-  test "should have invoice head link for buyers" do
-    get :index, auction_id: auctions(:auction1).id
-    assert_select ".table > thead > tr > th:nth-child(5)", "Invoice"
-    assert_select ".table > tbody > tr > td:nth-child(5) > a[href$=invoice]"
-  end
-
 
 end
