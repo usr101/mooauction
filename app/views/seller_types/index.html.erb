@@ -12,16 +12,13 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Edit</th>
-					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @seller_types.each do |seller_type| %>
 				<tr>
-					<td><%= seller_type.name %></td>
-					<td><%= link_to edit_auction_seller_type_path(@auction, seller_type) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
-					<td><%= link_to delete_auction_seller_type_path(@auction, seller_type) do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
+					<td><%= link_to seller_type.name, 
+					        edit_auction_seller_type_path(@auction, seller_type) %></td>
 				</tr>
 				<% end %>
 			</tbody>

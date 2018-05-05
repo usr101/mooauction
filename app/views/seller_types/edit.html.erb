@@ -30,6 +30,14 @@
 	<%= f.label :buyercalc, "Buyer Calculation" %>
 	<%= f.select :buyercalc , [["No Calculation", "NOCALC"], ["Weight", "WEIGHT"]], {}, {class: 'form-control'}  %>
 </div>
-<button type="submit" class="btn btn-default">Submit</button>
-<%= link_to 'Cancel', auction_seller_types_path, class: 'btn btn-default' %>
+<div class="row">
+	<div class="col-sm-11">
+		<button type="submit" class="btn btn-default">Submit</button>
+		<%= link_to 'Cancel', auction_seller_types_path, class: 'btn btn-default' %>
+	</div>
+	<div class="col-sm-1">
+		<%= link_to 'Delete', auction_seller_type_path(@auction, @seller_type), 
+			method: :delete,
+		 	data: { confirm: 'Are you sure?'} %>
+
 <% end %>

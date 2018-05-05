@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   		end
 
-      resources :seller_types
+      resources :seller_types, except: :show
 
       resources :sellers do
         collection do
