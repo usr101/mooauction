@@ -6,4 +6,31 @@
 	<h1>New Auction</h1>
 </div>
 <%= render "notifications" %>
-<%= render "form" %>
+<%= form_for @auction do |f| %>
+<div class="form-group">
+	<%= f.label :name, "Auction Name (max 50 characters)" %>
+	<%= f.text_field :name , class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :checks_payable, "Checks Payable To (max 150 characters)" %>
+	<%= f.text_field :checks_payable, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :invoice_title, "Invoice Title (max 50 characters)" %>
+	<%= f.text_field :invoice_title, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :address1, "Address Line 1" %>
+	<%= f.text_field :address1, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :address2, "Address Line 2" %>
+	<%= f.text_field :address2, class: 'form-control' %>
+</div>
+<div class="form-group">
+	<%= f.label :address3, "Address Line 3" %>
+	<%= f.text_field :address3, class: 'form-control' %>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+<%= link_to 'Cancel', :auctions, class: 'btn btn-default' %>
+<% end %>
