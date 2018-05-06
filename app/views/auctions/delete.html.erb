@@ -10,4 +10,4 @@
 	<p>Are you sure you want to want to delete auction <%= @auction.name %> and all the information contained in it?</p>
 </div>
 <%= link_to 'Yes, delete this auction!', auction_path(@auction), method: :delete, class: 'btn btn-danger' %>
-<%= link_to 'No, I changed my mind.', auctions_path, class: 'btn btn-default' %>
+<%= link_to 'No, I changed my mind.', auction_path(@auction), class: 'btn btn-default' %>

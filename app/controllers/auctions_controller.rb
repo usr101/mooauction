@@ -50,7 +50,7 @@ class AuctionsController < ApplicationController
 		@auction = Auction.find(params[:id])
 
 		if @auction.update(auction_params)
-			redirect_to :auctions
+			redirect_to @auction
 		else
 			render 'edit'
 		end
