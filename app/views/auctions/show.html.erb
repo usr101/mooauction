@@ -7,8 +7,9 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
-		<div class="btn-group action-bar" role="group" aria-label="Action Buttons">
+		<div class="action-bar" role="group" aria-label="Action Buttons">
 			<%= link_to 'Edit', edit_auction_path(@auction) , class: 'btn btn-default' %>
+			<%= link_to 'Delete', :delete_auction, class: 'btn btn-danger' %>
 		</div>
 	</div>
 </div>
