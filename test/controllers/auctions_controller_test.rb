@@ -77,6 +77,31 @@ class AuctionsControllerTest < ActionController::TestCase
     get :edit, id: (auctions(:auction1).id)
     assert_response :success
     assert_select "#auction_address3"
-  end    
+  end
+
+  test "should have invoice title on show" do 
+    get :show, id: (auctions(:auction1).id)
+    assert_select "p", auctions(:auction1).invoice_title
+  end 
+
+  test "should have address1 on show" do
+    get :show, id: (auctions(:auction1).id)
+    assert_select "p", auctions(:auction1).address1
+  end
+
+  test "should have address2 on show" do
+    get :show, id: (auctions(:auction1).id)
+    assert_select "p", auctions(:auction1).address2
+  end
+
+  test "should have address3 on show" do
+    get :show, id: (auctions(:auction1).id)
+    assert_select "p", auctions(:auction1).address3
+  end
+
+  test "should have check payable on show" do
+    get :show, id: (auctions(:auction1).id)
+    assert_select "p", auctions(:auction1).checks_payable
+  end  
 
 end

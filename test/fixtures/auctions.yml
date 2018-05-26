@@ -19,6 +19,7 @@ auction1:
   address1: Test Auction Company
   address2: 300 Main Street
   address3: Smallville, ID  23432
+  checks_payable: Simple Auction Services
 
 auction2:
   name: Test Auction 2
