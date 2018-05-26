@@ -1,16 +1,12 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Auctions", auctions_path %></li>
-  <li><%= link_to @auction.name, auction_path(@auction) %></li>
-  <li class="active">Buyers</li>
-</ol>
 <div class="page-header">
 	<h1>Buyers</h1>
 </div>
-<p class="button-group"><%= link_to 'Add a buyer', :new_auction_buyer, class: 'btn btn-default' %> <%= link_to 'Import Buyers', :import_auction_buyers, class: 'btn btn-default' %> <%=link_to 'Export Buyers', auction_buyers_path(@auction, format: 'csv'), class: 'btn btn-default' %></p>
+<p class="button-group"><%= link_to 'Add a buyer', :new_buyer, class: 'btn btn-default' %> <%= link_to 'Import Buyers', :import_buyers, class: 'btn btn-default' %> <%=link_to 'Export Buyers', buyers_path(format: 'csv'), class: 'btn btn-default' %></p>
 <div>
 	<table class="table table-striped">
 			<thead>
 				<tr>
+					<th>Auction</th>
 					<th>Number</th>
 					<th>Name</th>
 				</tr>
@@ -18,8 +14,9 @@
 			<tbody>
 			<% @buyers.each do |buyer| %>
 				<tr>
+					<td><%= buyer.auction.name %></td>
 					<td><%= buyer.number %></td>
-          			<td><%= link_to buyer.name, edit_auction_buyer_path(@auction, buyer.id) %></td>
+          			<td><%= link_to buyer.name, edit_buyer_path(buyer.id) %></td>
 				</tr>
 			<% end %>
 			</tbody>

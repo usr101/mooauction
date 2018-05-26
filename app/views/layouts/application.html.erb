@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="auction-navbar-collapse-1">
      <ul class="nav navbar-nav navbar-left">
         <li><%= link_to 'Auctions', :auctions %></li>
-        <li><%= link_to 'Buyers',  '#' %></li>
+        <li><%= link_to 'Buyers',  :buyers %></li>
         <li><%= link_to 'Types', '#' %></li>
         <% if has_admin_role? %>
       <li><%= link_to 'Admin', :admin %></li>
