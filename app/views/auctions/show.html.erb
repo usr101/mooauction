@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><%= @auction.name %></h1>
+	<h1>Auction Information</h1>
 </div>
 <div class="row">
 	<div class="col-sm-12">
@@ -9,4 +9,43 @@
 		</div>
 	</div>
 </div>
-
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Auction Name</h4>
+			</div>
+			<div class="panel-body">
+				<p><%= @auction.name %></p>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Invoice Checks Payable Text</h4>
+			</div>
+			<div class="panel-body">
+				<p><%= @auction.checks_payable %></p>
+			</div>
+		</div>		
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Invoice Title</h4>
+			</div>
+			<div class="panel-body">
+				<p><%= @auction.invoice_title %></p>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Invoice Address</h4>
+			</div>
+			<div class="panel-body">
+				<p><%= @auction.address1 %></p>
+				<p><%= @auction.address2 %></p>
+				<p><%= @auction.address3 %></p>
+			</div>
+		</div>		
+	</div>	
+</div>
