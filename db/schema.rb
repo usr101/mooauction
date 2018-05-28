@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170912231624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "auctions", force: true do |t|
+  create_table "auctions", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,20 +27,20 @@ ActiveRecord::Schema.define(version: 20170912231624) do
     t.string   "address3"
   end
 
-  create_table "bidders", force: true do |t|
+  create_table "bidders", force: :cascade do |t|
     t.integer "buyer_id"
     t.integer "bid_id"
   end
 
-  create_table "bids", force: true do |t|
+  create_table "bids", force: :cascade do |t|
     t.decimal  "buyerbid",   precision: 30, scale: 2
     t.integer  "option"
+    t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "seller_id"
   end
 
-  create_table "buyers", force: true do |t|
+  create_table "buyers", force: :cascade do |t|
     t.integer  "number",     null: false
     t.string   "name",       null: false
     t.integer  "auction_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170912231624) do
 
   add_index "buyers", ["auction_id"], name: "index_buyers_on_auction_id", using: :btree
 
-  create_table "seller_types", force: true do |t|
+  create_table "seller_types", force: :cascade do |t|
     t.string   "name",                                    null: false
     t.integer  "auction_id",                              null: false
     t.datetime "created_at"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170912231624) do
 
   add_index "seller_types", ["auction_id"], name: "index_seller_types_on_auction_id", using: :btree
 
-  create_table "sellers", force: true do |t|
+  create_table "sellers", force: :cascade do |t|
     t.string   "number",                                                null: false
     t.integer  "order",                                   default: 0,   null: false
     t.string   "name",                                                  null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170912231624) do
 
   add_index "sellers", ["seller_type_id"], name: "index_sellers_on_seller_type_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
