@@ -27,6 +27,7 @@
 	<%= f.label :address3, "Address Line 3" %>
 	<%= f.text_field :address3, class: 'form-control' %>
 </div>
-<button type="submit" class="btn btn-default">Submit</button>
+<button type="submit" class="btn btn-primary">Save</button>
 <%= link_to 'Cancel', auction_path(@auction), class: 'btn btn-default' %>
+<%= link_to 'Delete', :delete_auction, class: 'btn btn-danger' %>
 <% end %>
