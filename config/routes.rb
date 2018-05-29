@@ -15,6 +15,16 @@ Rails.application.routes.draw do
   # Define an auction resource
   resources :auctions do
   		get :delete, on: :member
+
+      resources :buyers do
+        collection do
+          get 'import'
+          post 'import', action: 'upload'
+        end
+        member do
+          get 'invoice'
+        end
+      end
   		
       resources :seller_types, except: :show
 
@@ -27,16 +37,6 @@ Rails.application.routes.draw do
 
       resource :bid
 
-  end
-
-  resources :buyers do
-    collection do
-      get 'import'
-      post 'import', action: 'upload'
-    end
-    member do
-      get 'invoice'
-    end
   end
 
   # Login and Logout routes
