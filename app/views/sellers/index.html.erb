@@ -1,8 +1,6 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Auctions", auctions_path %></li>
-  <li><%= link_to @auction.name, auction_path(@auction) %></li>
-  <li class="active">Sellers (<%= @seller_type.name %>)</li>
-</ol>
+<p>
+	<%= link_to "Back to auction", auction_path(@auction) %>
+</p>
 <div class="page-header">
 	<h1>Sellers (<%= @seller_type.name %>)</h1>
 </div>
@@ -19,7 +17,6 @@
 					<th>Name</th>
 					<th>Weight</th>
 					<th>Packer Bid</th>
-					<th>Buyer(s) Bid</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,11 +27,6 @@
 					<td><%= link_to seller.name, edit_auction_seller_type_seller_path(@auction,@seller_type, seller) %></td>
 					<td><%= seller.weight %></td>
 					<td><%= number_to_currency(seller.packerbid) %></td>
-					<% if seller.bid.nil? %>
-					<td><%= link_to "Add Bid", new_auction_seller_type_seller_bid_path(@auction, @seller_type, seller) %></td>							
-					<% else %>
-					<td><%= link_to number_to_currency(seller.bid.buyerbid), edit_auction_seller_type_seller_bid_path(@auction, @seller_type, seller, seller.bid) %></td>	
-					<% end %>
 				</tr>
 				<% end %>
 			</tbody>			
