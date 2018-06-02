@@ -26,12 +26,13 @@ Rails.application.routes.draw do
         end
       end
   		
-      resources :seller_types, except: :show
+      resources :seller_types, except: :show do 
 
-      resources :sellers do
-        collection do
-          get 'import'
-          post 'import', action: 'upload'
+        resources :sellers do
+          collection do
+            get 'import'
+            post 'import', action: 'upload'
+          end
         end
       end
 
