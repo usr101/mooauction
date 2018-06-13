@@ -31,7 +31,17 @@
 					<%= link_to seller_type.name, auction_seller_type_sellers_path(@auction, seller_type), class: "btn btn-default" %>
 				<% end %>
 			</div>
-		</div>		
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2>Bids</h2>
+			</div>
+			<div class="panel-body">
+				<% @auction.seller_types.each do |seller_type| %>
+					<%= link_to seller_type.name, auction_seller_type_bids_path(@auction, seller_type), class: "btn btn-default" %>
+				<% end %>
+			</div>
+		</div>	
 	</div>
 	<div class="col-sm-4">
 		<div class="panel panel-default">
