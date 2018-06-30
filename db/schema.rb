@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20180613010739) do
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
-    t.string   "name",           limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "checks_payable", limit: 255
+    t.string   "checks_payable"
     t.string   "invoice_title",  limit: 50
-    t.string   "address1",       limit: 255
-    t.string   "address2",       limit: 255
-    t.string   "address3",       limit: 255
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
   end
 
   create_table "bidders", force: :cascade do |t|
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20180613010739) do
   end
 
   create_table "buyers", force: :cascade do |t|
-    t.integer  "number",                 null: false
-    t.string   "name",       limit: 255, null: false
+    t.integer  "number",     null: false
+    t.string   "name",       null: false
     t.integer  "auction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,36 +51,36 @@ ActiveRecord::Schema.define(version: 20180613010739) do
   add_index "buyers", ["auction_id"], name: "index_buyers_on_auction_id", using: :btree
 
   create_table "seller_types", force: :cascade do |t|
-    t.string   "name",       limit: 255,                    null: false
-    t.integer  "auction_id",                                null: false
+    t.string   "name",                                    null: false
+    t.integer  "auction_id",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "packercalc", limit: 6,   default: "NOCALC"
-    t.string   "buyercalc",  limit: 6,   default: "NOCALC"
+    t.string   "packercalc", limit: 6, default: "NOCALC"
+    t.string   "buyercalc",  limit: 6, default: "NOCALC"
   end
 
   add_index "seller_types", ["auction_id"], name: "index_seller_types_on_auction_id", using: :btree
 
   create_table "sellers", force: :cascade do |t|
-    t.string   "number",         limit: 255,                                        null: false
-    t.integer  "order",                                               default: 0,   null: false
-    t.string   "name",           limit: 255,                                        null: false
-    t.decimal  "packerbid",                  precision: 30, scale: 2, default: 0.0
-    t.integer  "seller_type_id",                                                    null: false
+    t.string   "number",                                                null: false
+    t.integer  "order",                                   default: 0,   null: false
+    t.string   "name",                                                  null: false
+    t.decimal  "packerbid",      precision: 30, scale: 2, default: 0.0
+    t.integer  "seller_type_id",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "weight",                     precision: 10, scale: 2, default: 0.0
+    t.decimal  "weight",         precision: 10, scale: 2, default: 0.0
   end
 
   add_index "sellers", ["seller_type_id"], name: "index_sellers_on_seller_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.string   "email",           limit: 255
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest", limit: 255
-    t.string   "role",            limit: 255
+    t.string   "password_digest"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
