@@ -47,8 +47,4 @@ class BuyerTest < ActiveSupport::TestCase
     assert_not buyer2.save
   end
 
-  test "nil value for buyerbid should return 0" do
-    assert_equal 0, buyers(:buyer6).pays_for_seller(sellers(:seller5))
-  end
-
 end
