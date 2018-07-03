@@ -1,0 +1,29 @@
+<p>
+	<%= link_to "Back to auction", auction_path(@auction) %>
+</p>
+<div class="page-header">
+	<h1>Bids (<%= @seller_type.name %>)</h1>
+</div>
+<p class="button-group"></p>
+<div>
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Order</th>
+					<th>Number</th>
+					<th>Name</th>
+					<th>Bid</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @sellers.each do |seller| %>
+				<tr>
+					<td><%= seller.order %></td>
+					<td><%= seller.number %></td>
+					<td><%= seller.name %></td>
+				  <td><%= link_to "Add Bid", "#" %></td>	
+				</tr>
+				<% end %>
+			</tbody>			
+	</table>
+</div>
