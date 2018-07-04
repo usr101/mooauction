@@ -18,33 +18,20 @@ class BidsController < ApplicationController
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@buyers = @auction.buyers
 		@bid = Bid.new
-
 	end
 
 	def create
-
 		@auction = Auction.find(params[:auction_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
-		@seller = Seller.find(params[:seller_id])
 		@buyers = @auction.buyers
 		@bid = Bid.new(bid_params)
-		@bid.seller = @seller
-
-		buyer_ids = params[:bid][:buyer_ids]
-
-		buyer_ids.each do | buyer_id |
-			if not buyer_id.empty?
-				buyer = Buyer.find(buyer_id)
-				@bid.buyers << buyer
-			end
-		end
+		@seller = @bid.seller
 
 		if @bid.save
-			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
+			redirect_to auction_seller_type_bids_path(@auction, @seller_type)
 		else
 			render 'new'
 		end
-
 	end
 
 	def edit
@@ -75,7 +62,7 @@ class BidsController < ApplicationController
 
 		def bid_params
 			params.require(:bid)
-				.permit(:buyerbid, :option, :buyer_ids)
+				.permit(:buyerbid, :option, :buyer_ids, :seller_id)
 		end	
 
 end
