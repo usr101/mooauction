@@ -18,6 +18,7 @@ class BidsController < ApplicationController
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@buyers = @auction.buyers
 		@bid = Bid.new
+    @bid.seller = @seller
 	end
 
 	def create
@@ -25,11 +26,11 @@ class BidsController < ApplicationController
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@buyers = @auction.buyers
 		@bid = Bid.new(bid_params)
-		@seller = @bid.seller
-
-		if @bid.save
+		
+    if @bid.save
 			redirect_to auction_seller_type_bids_path(@auction, @seller_type)
 		else
+      @seller = @bid.seller
 			render 'new'
 		end
 	end
@@ -62,7 +63,7 @@ class BidsController < ApplicationController
 
 		def bid_params
 			params.require(:bid)
-				.permit(:buyerbid, :option, :buyer_ids, :seller_id)
+				.permit(:buyerbid, :option, :seller_id, :buyer_ids => [])
 		end	
 
 end
