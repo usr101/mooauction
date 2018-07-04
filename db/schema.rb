@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613010739) do
+ActiveRecord::Schema.define(version: 20180704132620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,15 @@ ActiveRecord::Schema.define(version: 20180613010739) do
   end
 
   create_table "bids", force: :cascade do |t|
-    t.decimal  "buyerbid",       precision: 30, scale: 2
+    t.decimal  "buyerbid",   precision: 30, scale: 2
     t.integer  "option"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "seller_type_id"
+    t.integer  "bidder_id"
+    t.integer  "seller_id"
   end
+
+  add_index "bids", ["seller_id"], name: "index_bids_on_seller_id", using: :btree
 
   create_table "buyers", force: :cascade do |t|
     t.integer  "number",     null: false
@@ -85,4 +88,6 @@ ActiveRecord::Schema.define(version: 20180613010739) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "bids", "bidders"
+  add_foreign_key "bids", "sellers"
 end

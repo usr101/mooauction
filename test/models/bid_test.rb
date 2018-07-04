@@ -7,16 +7,9 @@ class BidTest < ActiveSupport::TestCase
     assert bid.valid?
   end
 
-  test "references seller" do
-  end
-
-  test "references buyer" do
-  end
-
-  test "requires buyerbid" do
-  end
-
-  test "requires option" do
+  test "requires seller" do
+    bid = Bid.new(buyerbid: 100, option: 1, buyers: [buyers(:buyer1)])
+    refute bid.valid?
   end
 
 end

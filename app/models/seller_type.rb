@@ -18,5 +18,4 @@ class SellerType < ActiveRecord::Base
 	belongs_to :auction
 	validates :auction, presence: true
 	has_many :sellers, dependent: :destroy
-	has_many :bids, dependent: :destroy
 end
