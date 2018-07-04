@@ -19,7 +19,7 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for @bid, url: auction_seller_type_bid_path(@auction, @seller_type, @seller) do |f| %>
+<%= form_for @bid, url: auction_seller_type_bids_path(@auction, @seller_type) do |f| %>
 <div class="form-group">
 	<%= f.label :buyerbid, "Bid Amount" %>
 	<%= f.text_field :buyerbid , class: 'form-control' %>
