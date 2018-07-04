@@ -21,7 +21,7 @@
 					<td><%= seller.order %></td>
 					<td><%= seller.number %></td>
 					<td><%= seller.name %></td>
-				  <td><%= link_to "Add Bid", "#" %></td>	
+          <td><%= link_to "Add Bid", new_auction_seller_type_bid_path(@auction, @seller_type, :seller_id => seller.id) %></td>	
 				</tr>
 				<% end %>
 			</tbody>			
