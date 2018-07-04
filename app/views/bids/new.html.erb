@@ -3,7 +3,7 @@
   <li><%= link_to @auction.name, auction_path(@auction) %></li>
   <li><%= link_to 'Sellers (' + @seller_type.name + ')',
                                 auction_seller_type_sellers_path(@auction, @seller_type) %></li>
-  <li>Seller (<%= @seller.number %> - <%= @seller.name %>)
+  <li>Bid for Seller (<%= @seller.number %> - <%= @seller.name %>)
 
   <li class="active">New Bid</li>
 </ol>
@@ -19,7 +19,7 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for @bid, url: auction_seller_type_seller_bid_path(@auction, @seller_type, @seller) do |f| %>
+<%= form_for @bid, url: auction_seller_type_bid_path(@auction, @seller_type, @seller) do |f| %>
 <div class="form-group">
 	<%= f.label :buyerbid, "Bid Amount" %>
 	<%= f.text_field :buyerbid , class: 'form-control' %>
