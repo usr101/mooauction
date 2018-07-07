@@ -21,7 +21,11 @@
 					<td><%= seller.order %></td>
 					<td><%= seller.number %></td>
 					<td><%= seller.name %></td>
+          <% if seller.bid %>
+          <td><%= link_to "Edit Bid", edit_auction_seller_type_bid_path(@auction, @seller_type, seller.bid, :seller_id => seller.id) %></td>
+          <% else %>
           <td><%= link_to "Add Bid", new_auction_seller_type_bid_path(@auction, @seller_type, :seller_id => seller.id) %></td>	
+          <% end %>
 				</tr>
 				<% end %>
 			</tbody>			
