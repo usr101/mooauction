@@ -40,9 +40,6 @@ class BidsControllerTest < ActionController::TestCase
     assert_redirected_to auction_seller_type_bids_path(auction, seller_type) 
     assert_not_nil assigns(:auction)
     assert_not_nil assigns(:seller_type)
-    assert_not_nil assigns(:bid)
-    assert_not_nil assigns(:seller)
-    assert_not_nil assigns(:buyers)
   end
 
 end
