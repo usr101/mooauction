@@ -3,7 +3,7 @@
   <li><%= link_to @auction.name, auction_path(@auction) %></li>
   <li><%= link_to 'Sellers (' + @seller_type.name + ')',
                                 auction_seller_type_sellers_path(@auction, @seller_type) %></li>
-  <li>Seller (<%= @seller.number %> - <%= @seller.name %>)
+  <li>Bid for Seller (<%= @seller.number %> - <%= @seller.name %>)
 
   <li class="active">Edit Bid</li>
 </ol>
@@ -19,26 +19,20 @@
 	</ul>
 </div>
 <% end %>
-<%= form_for @bid, url: auction_seller_type_seller_bid_path(@auction, @seller_type, @seller), method: :patch do |f| %>
+<%= form_for @bid, url: auction_seller_type_bid_path(@auction, @seller_type, @bid), method: :patch do |f| %>
+<%= f.hidden_field :seller_id %>
 <div class="form-group">
 	<%= f.label :buyerbid, "Bid Amount" %>
 	<%= f.text_field :buyerbid , class: 'form-control' %>
 </div>
-<%= f.fields_for :bidders do |bidders_form| %>
 <div class="form-group">
-	<%= bidders_form.label "Buyer" %>
-	<%= bidders_form.collection_select(:buyer_id, @buyers, :id,
-				 :number_and_name, {}, { class: 'form-control' }) %>
+	<%= f.label :buyers, "Buyer(s)" %>
+  <%= f.collection_select(:buyer_ids, @buyers, :id, :number_and_name, {:include_hidden => false}, {:multiple => true}) %>
 </div>
-<div class="form-group">
-	<%= bidders_form.label "Amount" %>
-	<%= bidders_form.text_field :amount, class: 'form-control' %>
-</div>
-<% end %>
 <div class="form-group">
 	<%= f.label :option, "Buyer option" %>
 	<%= f.text_field :option , class: 'form-control' %>
 </div>
 <button type="submit" class="btn btn-default">Submit</button>
-<%= link_to 'Cancel', auction_seller_type_sellers_path(@auction, @seller_type), class: 'btn btn-default' %>
+<%= link_to 'Cancel', auction_seller_type_bids_path(@auction, @seller_type), class: 'btn btn-default' %>
 <% end %>

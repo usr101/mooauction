@@ -46,13 +46,12 @@ class BidsController < ApplicationController
 	def update
 
 		@auction = Auction.find(params[:auction_id])
-		@seller = Seller.find(params[:seller_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
 		@buyers = @auction.buyers
-		@bid = @seller.bid
+		@bid = Bid.find(params[:id])
 
 		if @bid.update(bid_params)
-			redirect_to auction_seller_type_sellers_path(@auction, @seller_type)
+			redirect_to auction_seller_type_bids_path(@auction, @seller_type)
 		else 
 			render 'edit'
 		end
@@ -63,7 +62,7 @@ class BidsController < ApplicationController
 
 		def bid_params
 			params.require(:bid)
-				.permit(:buyerbid, :option, :seller_id, :buyer_ids => [])
+				.permit(:id, :buyerbid, :option, :seller_id, :buyer_ids => [])
 		end	
 
 end
