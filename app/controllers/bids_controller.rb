@@ -58,6 +58,15 @@ class BidsController < ApplicationController
 
 	end
 
+  def destroy
+		@auction = Auction.find(params[:auction_id])
+		@seller_type = SellerType.find(params[:seller_type_id])
+		@bid = Bid.find(params[:id])
+		if @bid.destroy
+			redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+		end
+  end
+
 	private
 
 		def bid_params
