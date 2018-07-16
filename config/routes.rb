@@ -32,9 +32,9 @@ Rails.application.routes.draw do
           end
         end
         resources :bids
-        resources :invoices
       end
 
+      resources :invoices
 
   end
 

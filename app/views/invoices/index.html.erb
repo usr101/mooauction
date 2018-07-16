@@ -1,0 +1,26 @@
+<div>
+	<p><%= link_to "Back to Auction", auction_path(@auction) %></p>
+</div>
+<div class="page-header">
+	<h1>Buyer Invoices</h1>
+</div>
+<div>
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Buyer Number</th>
+					<th>Buyer Name</th>
+          <th>Invoice</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @buyers.each do |buyer| %>
+				<tr>
+					<td><%= buyer.number %></td>
+         	<td><%= buyer.name %></td>
+          <td><%= link_to "Show Invoice", auction_invoice_path(@auction, buyer.number) %></td>
+				</tr>
+			<% end %>
+			</tbody>
+	</table>
+</div>
