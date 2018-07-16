@@ -21,9 +21,6 @@ Rails.application.routes.draw do
           get 'import'
           post 'import', action: 'upload'
         end
-        member do
-          get 'invoice'
-        end
       end
   		
       resources :seller_types, except: :show do 
@@ -35,7 +32,9 @@ Rails.application.routes.draw do
           end
         end
         resources :bids
+        resources :invoices
       end
+
 
   end
 
