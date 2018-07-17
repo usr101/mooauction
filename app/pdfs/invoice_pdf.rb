@@ -13,11 +13,11 @@ class InvoicePdf < Prawn::Document
     @invoice_title = @auction.invoice_title
 
     # We want to print buyer bought items in groups of 25
-    total_sellers = @buyer.sellers.count
+    total_bids = @buyer.bids.count
     current_offset = 0
     current_record = 1
     @total = 0
-    while current_offset <= total_sellers
+    while current_offset <= total_bids
       if current_offset > 0
         start_new_page
       end
@@ -86,16 +86,16 @@ class InvoicePdf < Prawn::Document
                        { :content => 'Buyer Pays', :font_style => :bold} ] ]
 
       #total = 0
-      @buyer.sellers.limit(@num_data_rows).offset(current_offset).each do |seller| 
-        purchase_data += [[seller.seller_type.name.singularize, 
-                        seller.number,
-                        seller.name, 
-                        number_to_currency(seller.packerbid), 
-                        number_to_currency(seller.buyerbid),
-                        seller.buyers.count,
-                        seller.option,
-                        number_to_currency(@buyer.pays_for_seller(seller))]]
-        @total = @total + @buyer.pays_for_seller(seller) 
+      @buyer.bids.limit(@num_data_rows).offset(current_offset).each do |bid| 
+        purchase_data += [[bid.seller.seller_type.name.singularize, 
+                        bid.seller.number,
+                        bid.seller.name, 
+                        number_to_currency(bid.seller.packerbid), 
+                        number_to_currency(bid.buyerbid),
+                        bid.buyers.count,
+                        bid.option,
+                        number_to_currency(pays_for_bid(bid))]]
+        @total = @total + pays_for_bid(bid) 
       end
 
       
@@ -120,5 +120,34 @@ class InvoicePdf < Prawn::Document
       t.draw
     end
 
+  # Calculate the amount the buyers owe the seller.
+  def pays_for_bid(bid)
+
+    current_round_mode = BigDecimal.mode(BigDecimal::ROUND_MODE) 
+    BigDecimal.mode(BigDecimal::ROUND_MODE, :down) 
+
+    payment_in_cents = 0
+    
+    # if there are any bids, the calculate the amount paid by the buyers.
+    if bid 
+
+	    num_buyers = bid.buyers.count
+    
+	    if bid.buyerbid != 0 
+	    	buyer_pays_in_cents = bid.buyerbid * 100
+	    	remainder = buyer_pays_in_cents % num_buyers
+	    	payment_in_cents = (buyer_pays_in_cents / num_buyers).round
+	    	if remainder != 0 and bid.oldest_buyer != nil
+	      	payment_in_cents = payment_in_cents + remainder if id == bid.oldest_buyer.id
+	    	end
+		  end
+
+	  end
+
+    BigDecimal.mode(BigDecimal::ROUND_MODE, current_round_mode)
+      
+   	payment_in_cents / 100.00 
+
+  end
 
 end
