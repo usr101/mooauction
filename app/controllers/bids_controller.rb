@@ -38,7 +38,13 @@ class BidsController < ApplicationController
 						redirect_to new_auction_seller_type_bid_path(@auction, @seller_type, next_seller_bid, :seller_id => next_seller.id)
 					end
 				else
-					redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+					first_seller = @seller_type.sellers.order(:order).first
+					first_seller_bid = first_seller.bid
+					if first_seller_bid
+						redirect_to edit_auction_seller_type_bid_path(@auction, @seller_type, first_seller_bid, :seller_id => first_seller.id)
+					else 
+						redirect_to new_auction_seller_type_bid_path(@auction, @seller_type, first_seller_bid, :seller_id => first_seller.id)
+					end
 				end
 			else
 				redirect_to auction_seller_type_bids_path(@auction, @seller_type)
@@ -75,7 +81,13 @@ class BidsController < ApplicationController
 						redirect_to new_auction_seller_type_bid_path(@auction, @seller_type, next_seller_bid, :seller_id => next_seller.id)
 					end
 				else
-					redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+					first_seller = @seller_type.sellers.order(:order).first
+					first_seller_bid = first_seller.bid
+					if first_seller_bid
+						redirect_to edit_auction_seller_type_bid_path(@auction, @seller_type, first_seller_bid, :seller_id => first_seller.id)
+					else 
+						redirect_to new_auction_seller_type_bid_path(@auction, @seller_type, first_seller_bid, :seller_id => first_seller.id)
+					end
 				end
 			else
 				redirect_to auction_seller_type_bids_path(@auction, @seller_type)
