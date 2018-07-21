@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   		log_in user
   		redirect_to :auctions
   	else
+      @email = params[:session][:email]
   		flash.now[:danger] = "Invalid email/password combination"
   		render 'new'
   	end
