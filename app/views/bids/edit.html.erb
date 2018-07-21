@@ -1,12 +1,6 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Auctions", auctions_path %></li>
-  <li><%= link_to @auction.name, auction_path(@auction) %></li>
-  <li><%= link_to 'Sellers (' + @seller_type.name + ')',
-                                auction_seller_type_sellers_path(@auction, @seller_type) %></li>
-  <li>Bid for Seller (<%= @seller.number %> - <%= @seller.name %>)
-
-  <li class="active">Edit Bid</li>
-</ol>
+<p>
+	<%= link_to "Back to Bids", auction_seller_type_bids_path(@auction, @seller_type) %>
+</p>
 <div class="page-header">
 	<h1>Edit Bid for (<%= @seller.number %> - <%= @seller.name %>)</h1>
 </div>
