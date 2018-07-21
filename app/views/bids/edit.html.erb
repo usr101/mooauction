@@ -1,6 +1,11 @@
-<p>
-	<%= link_to "Back to Bids", auction_seller_type_bids_path(@auction, @seller_type) %>
-</p>
+<div class="row">
+	<div class="col-sm-10">
+		<%= link_to "Back to Bids", auction_seller_type_bids_path(@auction, @seller_type) %>
+	</div>
+	<div class="col-sm-2 text-right">
+		<%= link_to "Previous", @prev_seller_path %> <%= link_to "Next", @next_seller_path %>
+	</div>
+</div>
 <div class="page-header">
 	<h1>Edit Bid for (<%= @seller.number %> - <%= @seller.name %>)</h1>
 </div>
