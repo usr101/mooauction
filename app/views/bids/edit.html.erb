@@ -31,8 +31,6 @@
 <div class="col-sm-11">
   <button type="submit" class="btn btn-default" value="next" name="commit">Save and Next</button>
   <button type="submit" class="btn btn-default" value="list" name="commit">Save and List</button>
-
-  <%= link_to 'Cancel and List', auction_seller_type_bids_path(@auction, @seller_type), class: 'btn btn-default' %>
 </div>
 <div class="col-sm-1">
 		<%= link_to 'Delete', auction_seller_type_bid_path(@auction, @seller_type, @bid),
