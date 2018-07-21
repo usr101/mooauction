@@ -1,11 +1,6 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Auctions", auctions_path %></li>
-  <li><%= link_to @auction.name, auction_path(@auction) %></li>
-  <li><%= link_to 'Sellers (' + @seller_type.name + ')',
-                                auction_seller_type_sellers_path(@auction, @seller_type) %></li>
-  <li>Bid for Seller (<%= @seller.number %> - <%= @seller.name %>)</li>
-
-</ol>
+<p>
+	<%= link_to "Back to Bids", auction_seller_type_bids_path(@auction, @seller_type) %>
+</p>
 <div class="page-header">
 	<h1>New Bid for (<%= @seller.number %> - <%= @seller.name %>)</h1>
 </div>
@@ -32,6 +27,7 @@
 	<%= f.label :option, "Buyer option" %>
 	<%= f.text_field :option , class: 'form-control' %>
 </div>
-<button type="submit" class="btn btn-default">Submit</button>
-<%= link_to 'Cancel', auction_seller_type_bids_path(@auction, @seller_type), class: 'btn btn-default' %>
+  <button type="submit" class="btn btn-default" value="next" name="commit">Save and Next</button>
+  <button type="submit" class="btn btn-default" value="list" name="commit">Save and List</button>
+<%= link_to 'Cancel and List', auction_seller_type_bids_path(@auction, @seller_type), class: 'btn btn-default' %>
 <% end %>
