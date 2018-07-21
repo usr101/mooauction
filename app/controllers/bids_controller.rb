@@ -31,9 +31,9 @@ class BidsController < ApplicationController
 		
 	    if @bid.save
 	    	if params[:commit] == 'next'
-	    		redirect lookup_next_path
+	    		redirect_to lookup_next_path
 			elsif params[:commit] == 'prev'
-				redirect lookup_prev_path
+				redirect_to lookup_prev_path
 			else
 				redirect_to auction_seller_type_bids_path(@auction, @seller_type)
 			end
