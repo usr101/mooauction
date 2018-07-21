@@ -21,7 +21,7 @@
 
 <div class="form-group">
 	<%= f.label :order, "Seller order" %>
-	<%= f.text_field :order , class: 'form-control', type: 'number', step: 'any' %>
+	<%= f.text_field :order , class: 'form-control'%>
 </div>
 <div class="form-group">
 	<%= f.label :number, "Seller number" %>
@@ -33,11 +33,11 @@
 </div>
 <div class="form-group">
 	<%= f.label :weight, "Weight" %>
-	<%= f.text_field :weight , class: 'form-control', type: 'number', step: 'any' %>
+	<%= f.text_field :weight , class: 'form-control'%>
 </div>
 <div class="form-group">
 	<%= f.label :packerbid, "Packer Bid" %>
-	<%= f.text_field :packerbid , class: 'form-control', type: 'number', step: 'any' %>
+	<%= f.text_field :packerbid , class: 'form-control', value: number_with_precision(f.object.packerbid, precision: 2) %>
 </div>
 
 <% end %>
