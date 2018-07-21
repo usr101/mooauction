@@ -54,6 +54,6 @@ Rails.application.routes.draw do
   end
 
   # Root of application should be auctions
-  root 'sessions#new'
+  root 'auctions#index'
 
 end
