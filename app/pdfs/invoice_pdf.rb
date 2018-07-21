@@ -80,6 +80,7 @@ class InvoicePdf < Prawn::Document
                        { :content => 'Seller Number', :font_style => :bold}, 
                        { :content => 'Seller Name', :font_style => :bold}, 
                        { :content => 'Packer Bid', :font_style => :bold}, 
+                       { :content => 'Packer Pays', :font_style => :bold},
                        { :content => 'Buyer Bid', :font_style => :bold},
                        { :content => 'Buyer Count', :font_style => :bold}, 
                        { :content => 'Option', :font_style => :bold}, 
@@ -91,6 +92,7 @@ class InvoicePdf < Prawn::Document
                         bid.seller.number,
                         bid.seller.name, 
                         number_to_currency(bid.seller.packerbid), 
+                        number_to_currency(packerpays(bid)), 
                         number_to_currency(bid.buyerbid),
                         bid.buyers.count,
                         bid.option,
@@ -127,6 +129,8 @@ class InvoicePdf < Prawn::Document
     BigDecimal.mode(BigDecimal::ROUND_MODE, :down) 
 
     payment_in_cents = 0
+
+    buyer_pays = buyerpays(bid)
     
     # if there are any bids, the calculate the amount paid by the buyers.
     if bid 
@@ -134,7 +138,7 @@ class InvoicePdf < Prawn::Document
 	    num_buyers = bid.buyers.count
     
 	    if bid.buyerbid != 0 
-	    	buyer_pays_in_cents = bid.buyerbid * 100
+	    	buyer_pays_in_cents = buyer_pays * 100
 	    	remainder = buyer_pays_in_cents % num_buyers
 	    	payment_in_cents = (buyer_pays_in_cents / num_buyers).round
 	    	if remainder != 0 and bid.oldest_buyer != nil
@@ -149,5 +153,54 @@ class InvoicePdf < Prawn::Document
    	payment_in_cents / 100.00 
 
   end
+
+  def packerpays(bid)
+
+    seller = bid.seller
+    seller_type = seller.seller_type
+
+    packercalc = seller_type.packercalc
+
+    if bid.option == 1
+      if packercalc == "WEIGHT" 
+        return seller.packerbid * seller.weight
+      else 
+        return seller.packerbid
+      end
+    else 
+      return 0
+    end
+
+  end
+
+  def buyerpays(bid)
+
+    seller = bid.seller
+    seller_type = seller.seller_type
+
+    buyercalc = seller_type.buyercalc
+    packercalc = seller_type.packercalc
+
+    if (buyercalc == "WEIGHT") and (packercalc == "WEIGHT") and (bid.option == 1 )
+      return (bid.buyerbid - seller.packerbid) * seller.weight
+    elsif (buyercalc == "WEIGHT") and (packercalc == "WEIGHT") and (bid.option != 1)
+      return bid.buyerbid * seller.weight
+    elsif (buyercalc == "WEIGHT") and (packercalc == "NOCALC") and (bid.option == 1)
+      return (bid.buyerbid * seller.weight) - seller.packerbid
+    elsif (buyercalc == "WEIGHT") and (packercalc == "NOCALC") and (bid.option != 1)
+      return bid.buyerbid * seller.weight
+    elsif (buyercalc == "NOCALC") and (packercalc == "WEIGHT") and (bid.option == 1)
+      return bid.buyerbid - (seller.packerbid * seller.weight)
+    elsif (buyercalc == "NOCALC") and (packercalc == "WEIGHT") and (bid.option != 1)
+      return bid.buyerbid
+    elsif (buyercalc == "NOCALC") and (packercalc == "NOCALC") and (bid.option == 1)
+      return bid.buyerbid - seller.packerbid
+    elsif (buyercalc == "NOCALC") and (packercalc == "NOCALC") and (bid.option != 1)
+      return bid.buyerbid
+    else
+      return bid.buyerbid
+    end
+
+  end  
 
 end
