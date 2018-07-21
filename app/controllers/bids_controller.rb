@@ -27,10 +27,24 @@ class BidsController < ApplicationController
 		@buyers = @auction.buyers
 		@bid = Bid.new(bid_params)
 		
-    if @bid.save
-			redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+	    if @bid.save
+	    	if params[:commit] == 'next'
+	    		next_seller = @seller_type.sellers.where("sellers.order > ?", @bid.seller.order).order(:order).first
+	    		if next_seller
+	    			next_seller_bid = next_seller.bid
+	    			if next_seller_bid
+	    				redirect_to edit_auction_seller_type_bid_path(@auction, @seller_type, next_seller_bid, :seller_id => next_seller.id)
+					else
+						redirect_to new_auction_seller_type_bid_path(@auction, @seller_type, next_seller_bid, :seller_id => next_seller.id)
+					end
+				else
+					redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+				end
+			else
+				redirect_to auction_seller_type_bids_path(@auction, @seller_type)
+			end
 		else
-      @seller = @bid.seller
+	    	@seller = @bid.seller
 			render 'new'
 		end
 	end
