@@ -20,7 +20,7 @@
 				<td><%= buyer.number %></td>
          		<td><%= buyer.name %></td>
          		<td><%= buyer.bids.count %></td>
-          		<td><%= link_to "Show Invoice", auction_invoice_path(@auction, buyer.number), { target: 'blank' } %></td>
+          		<td><%= link_to "Show Invoice", auction_invoice_path(@auction, buyer.id), { target: 'blank' } %></td>
 			</tr>
 		<% end %>
 		</tbody>
