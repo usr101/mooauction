@@ -38,6 +38,8 @@ class SellerTest < ActiveSupport::TestCase
       @seller.seller_type = seller_types(:chickens)
       @seller.name = "test seller"
       @seller.number = "123B"
+      @seller.packerbid = 0
+      @seller.weight = 0
       assert @seller.save
       @saved_seller = Seller.find_by name: "test seller"
       assert_equal "123B", @saved_seller.number
