@@ -37,7 +37,6 @@ class BidsControllerTest < ActionController::TestCase
     post :create, :auction_id => auction.id, 
                   :seller_type_id => seller_type.id, 
                   bid: {buyerbid: 100, option: 1, buyer_id: buyer.id, seller_id: seller.id}
-    assert_redirected_to auction_seller_type_bids_path(auction, seller_type) 
     assert_not_nil assigns(:auction)
     assert_not_nil assigns(:seller_type)
   end
