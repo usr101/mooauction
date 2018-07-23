@@ -14,7 +14,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h2><%= auction.name %></h2>
-				<p><%= auction.buyers.count %> buyers, 0 items sold for $0.00 dollars</p>
+				<p><%= auction.buyers.count %> buyers, <%= auction.total_num_bids %> bids for <%= number_to_currency(auction.total_bid_amount) %> dollars</p>
 			</div>
 			<div class="panel-footer">
 				<%= link_to 'Open', auction_path(auction), class: 'btn btn-primary' %>

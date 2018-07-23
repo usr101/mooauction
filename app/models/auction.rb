@@ -20,4 +20,12 @@ class Auction < ActiveRecord::Base
 	has_many :buyers, dependent: :destroy
 	has_many :seller_types, dependent: :destroy
 
+	def total_num_bids
+		Auction.where(id: self.id).joins(seller_types: [ {sellers: :bid }] ).count
+	end
+
+	def total_bid_amount
+		Auction.where(id: self.id).joins(seller_types: [ {sellers: :bid }] ).sum("buyerbid")
+	end
+
 end
