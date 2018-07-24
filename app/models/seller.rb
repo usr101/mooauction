@@ -4,7 +4,7 @@ class Seller < ActiveRecord::Base
 	validates :weight, numericality: true
 	validates :packerbid, numericality: true
 	validates :order, numericality: { only_integer: true }
-	has_one :bid
+	has_one :bid, dependent: :destroy
 	belongs_to :seller_type
 
 
