@@ -9,7 +9,7 @@ class BidsController < ApplicationController
 	def index 
 		@auction = Auction.find(params[:auction_id])
 		@seller_type = SellerType.find(params[:seller_type_id])
-		@sellers = @seller_type.sellers
+		@sellers = @seller_type.sellers.order(:order)
 	end
 
 	def new
