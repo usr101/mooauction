@@ -1,6 +1,7 @@
 class Seller < ActiveRecord::Base
 
 	validates :name, presence: true, length: {maximum: 75}
+	validates :number, presence: true, length: {maximum: 75}
 	validates :weight, numericality: true
 	validates :packerbid, numericality: true
 	validates :order, numericality: { only_integer: true }

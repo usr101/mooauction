@@ -20,4 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      auction:
+        name: "Auction name"
+      buyer:
+        name: "Buyer name"
+        number: "Buyer number"
+      seller_type:
+        name: "Seller Type name"
+      seller:
+        name: "Seller name"
+        number: "Seller number"
+        weight: "Weight"
+        packerbid: "Packer Bid"
+        order: "Seller order"
+      bid:
+        buyerbid: "Bid amount"
+        buyers: "Buyers"
+        option: "Buyer option"
